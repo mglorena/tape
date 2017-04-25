@@ -1,0 +1,218 @@
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+x_LoadVehiculos(hasUpdate,hasInsert,LoadVehiculos_callback);
+jQuery(function($){
+    $("#txtPatente").mask("aaa-999");
+  
+    
+     $("#txtPatente").change(function() {
+         $("#txtPatente").css("text-transform","uppercase");
+        
+    }); 
+});
+function ImprimirReserva()
+{
+    html = $("#tblVehiculos").html();
+    tpage ="<b>Universidad Nacional de Salta</b><br/>DIRECCION DE SERVICIOS GENERALES<br/>SERVICIO DE AUTOMOTORES<br/><br/><b>FLOTA DE VEHICULOS</b><br/>";
+    html ="<link rel=\"stylesheet\" href='http://localhost/tape/css/print.css' type='text/css' />" + tpage + html;
+    
+    var w = window.open('', '', 'width=960,height=800,resizeable,scrollbars');
+    w.document.write(html);
+    w.document.title="Vehiculos";
+    w.document.close(); // needed for chrome and safari
+    
+}
+function ClearData()
+{
+    $("#txtModelo").val("");
+    $("#txtPatente").val("");
+    $("#txtCapacidad").val("");
+   // $("#txtFecha").val("");
+    $("#txtDescripcion").val("");
+    $("#txtConsumoxKM").val("");
+    $("#txtColor").val("");
+    $("#ddlCmb").val(0);
+     $("#divColorVe").css("background-color","#fff");
+    
+}
+
+function LoadVehiculos_callback(response)
+{
+    getId("tblVehiculos").innerHTML =response;
+      
+}
+function PopinInsertVehiculo(ev)
+{
+    
+    ClearData();
+    getId("btnSave").onclick = function (){
+        InsertVehiculo();
+    };
+    x_GetDdlTypeVehiculos("1",GetDdlTipoVehiculos_callback);   
+    titlePopin ="Agregar Vehiculo "; 
+    Popin(ev,"divVehiculo",5);
+        
+}
+function Validation()
+{
+    if($("#txtModelo").val() == "") {
+        humane.info("Debe completar el modelo del vehiculo");
+        return false;
+    }
+    if( $("#txtPatente").val() == "")  {
+        humane.info("Debe ingresar la patente");
+        return false;
+    }
+    if( $("#txtColor").val() == "")  {
+        humane.info("Debe ingresar un color en formato hexadecimal. Ej: #f00898");
+        return false;
+    }
+    if( $("#txtCapacidad").val() == "")  {
+        humane.info("Debe completar la capacidad");
+        return false;
+    }
+    
+     
+    return true;
+}
+function InsertVehiculo()
+{
+    if(Validation())
+        {
+    var mod = $("#txtModelo").val();
+    var pat =$("#txtPatente").val();
+    var cap = $("#txtCapacidad").val();
+    var f = null; //$("#txtFecha").val();
+    var desc = $("#txtDescripcion").val();
+    var cons = $("#txtConsumoxKM").val();
+    var color = $("#txtColor").val();
+    var cmbId = $("#ddlCmb").val();
+    var a = getId("chk_Active").checked;
+    var tve = $("#ddlTipoVehiculo").val();
+    x_InsertVehiculo(mod,pat,cmbId,cap,f,desc,cons,color,tve,a,InsertVehiculo_callback); 
+        }
+}
+
+function InsertVehiculo_callback(response)
+{
+    if(response)
+    {
+        humane.success("Se ha guardado el vehiculo correctamente.");
+        ClosePopin();
+        x_LoadVehiculos(hasUpdate,hasInsert,LoadVehiculos_callback);
+    }
+    else
+    {
+        humane.error("Hubo un error al guardar el vehiculo.");
+        SendJsError(new Error("Error InsertVehiculo-vehiculos.js"),"vehiculos.js",response);
+    }
+    ClosePopin();
+       
+}
+
+function GetDdlTipoVehiculos_callback(response)
+{
+    $("#divDdlVehiculos").html(response[1]);
+    $("#ddlTipoVehiculo").val(response[2]);
+      
+}
+function EditVehiculo(ev,vehiculoId)
+{
+   
+    x_EditVehiculo(vehiculoId,EditVehiculo_callback);
+     getId("btnSave").onclick = function (){
+        SaveVehiculo();
+    };
+    titlePopin ="Editar Vehiculo ";
+    Popin(ev,"divVehiculo",5);
+       
+}
+function EditVehiculo_callback(response)
+{
+    $("#txtModelo").val(response[1]);
+    $("#txtPatente").val(response[2]);
+    $("#ddlCmb").val(response[3]);
+    $("#txtCapacidad").val(response[4]);
+    //$("#txtFecha").val(response[5]);
+    $("#txtDescripcion").val(response[6]);
+    $("#txtConsumoxKM").val(response[7]);
+    $("#txtColor").val(response[8]);
+    x_GetDdlTypeVehiculos(response[9],GetDdlTipoVehiculos_callback);  
+    getId("chk_Active").checked = response[10];
+    $("#hdnVehiculoId").val(response[11]);
+    $("#divColorVe").css("background-color",response[8]);
+       
+}
+function SaveVehiculo()
+{
+    if(Validation())
+        {
+    var vehiculoId = $("#hdnVehiculoId").val();
+    var mod = $("#txtModelo").val();
+    var pat =$("#txtPatente").val();
+    var cap = $("#txtCapacidad").val();
+    var f = null; // $("#txtFecha").val();
+    var desc = $("#txtDescripcion").val();
+    var cons = $("#txtConsumoxKM").val();
+    var color = $("#txtColor").val();
+    var cmbId = $("#ddlCmb").val();
+    var a = getId("chk_Active").checked;
+    var tveId = $("#ddlTipoVehiculo").val();
+
+    x_SaveVehiculo(vehiculoId,mod,pat,cmbId,cap,f,desc,cons,color,tveId,a,SaveVehiculo_callback);
+        }
+        
+}
+function SaveVehiculo_callback(response)
+{
+    if(response)
+    {
+        humane.success("Se ha guardado el vehiculo correctamente.");
+        ClosePopin();
+        x_LoadVehiculos(hasUpdate,hasInsert,LoadVehiculos_callback);
+    }
+    else
+    {
+        humane.error("Hubo un error al guardar el vehiculo.");
+        SendJsError(new Error("Error SaveVehiculo-vehiculos.js"),"vehiculos.js",response);
+    }
+    ClosePopin();
+}
+function Cancel()
+{
+    ClearData();
+    ClosePopin();
+}
+function DeleteVehiculo(vehiculoId)
+{
+    
+    smoke.confirm('Esta seguro que quiere borrar este vehiculo?',function(e){
+        if (e){
+            x_DeleteVehiculo(vehiculoId,DeleteVehiculo_callback);
+           
+        }
+    });
+}
+function DeleteVehiculo_callback(response)
+{
+        
+    if(response)
+    {
+        humane.success("Se ha eliminado el vehiculo correctamente.");
+        ClosePopin();
+        x_LoadVehiculos(hasUpdate,hasInsert,LoadVehiculos_callback);
+    }
+    else
+    {
+        humane.error("Hubo un error al eliminar el vehiculo.");
+        SendJsError(new Error("Error DeleteVehiculo-vehiculos.js"),"vehiculos.js",response);
+    }
+    ClosePopin();
+}
+function ChangeColor()
+{
+     var color = $("#txtColor").val();
+      $("#divColorVe").css("background-color",color);
+}

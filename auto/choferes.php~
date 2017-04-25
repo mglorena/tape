@@ -1,0 +1,195 @@
+<?php
+require_once ('../class/cchoferes.php');
+require_once ('../class/cdump.php');
+
+require_once ('../include/conf.php');
+require("../class/csajax.php");
+$sajax_request_type = "POST";
+sajax_init();
+sajax_export("EditChofer", "SaveChofer", "LoadChoferes", "DeleteChofer", "InsertChofer", "SendJsError");
+sajax_handle_client_request();
+
+function SecurityPage() {
+    $rulesIds = explode(",", $_SESSION['S_rules']);
+    if (!in_array(19, $rulesIds)) { // ver la pagina reservas
+        echo "<script>window.location ='" . $host . "noautorization.php?p=Choferes';</script>";
+    }
+    echo "<script>";
+    if (!in_array(20, $rulesIds)) // editor o borrar
+        echo "var hasUpdate =false;";
+    else
+        echo "var hasUpdate =true;";
+    if (!in_array(21, $rulesIds)) // insertar 
+        echo "var hasInsert =false;";
+    else
+        echo "var hasInsert =true;";
+    echo "</script>";
+}
+
+function EditChofer($choferId) {
+
+    $choferSearch = new Chofer();
+    $choferSearch->ChoferId = $choferId;
+    $chofer = $choferSearch->GetByChoferId();
+
+    foreach ($chofer as $ch) {
+        $firstName = $ch->FirstName;
+        $lastName = $ch->LastName;
+        $legajo = $ch->Legajo;
+        $vHExtra = $ch->ValorHoraExtra;
+        $vHHabil = $ch->ValorHoraHabil;
+        $vHInhabil = $ch->ValorHoraInhabil;
+        $celular = $ch->Celular;
+        $active = ($ch->Active == 1? true:false);
+        $vHExtra = str_replace(".", ",", $vHExtra);
+        $vHHabil = str_replace(".", ",", $vHHabil);
+        $vHInhabil = str_replace(".", ",", $vHInhabil);
+       // echo do_dump($ch);
+    }
+    
+    $return = array("1" => $firstName, "2" => $lastName, "3" => $legajo, "4" => $vHExtra, "5" => $vHHabil, "6" => $vHInhabil, "7" => $celular, "8" => $active, "9" => $choferId);
+    return $return;
+}
+
+function SaveChofer($choferId, $fname, $lname, $leg, $cel, $vhextra, $vhinhabil, $vhhabil, $a) {
+    try {
+        $ch = new Chofer();
+        $ch->ChoferId = $choferId;
+        $ch->FirstName = $fname;
+        $ch->LastName = $lname;
+        $ch->Celular = $cel;
+        $ch->Legajo = $leg;
+        $ch->ValorHoraExtra = str_replace(",", ".", $vhextra);
+        $ch->ValorHoraHabil = str_replace(",", ".", $vhhabil);
+        $ch->ValorHoraInhabil = str_replace(",", ".", $vhinhabil);
+        $ch->Active = $a;
+        return $ch->Save();
+    } catch (ErrorException $ex) {
+        $e = new Errors();
+        $e->SendErrorMessage($ex, "cchoferes.php - SaveChofer", $choferId);
+    }
+}
+
+function InsertChofer($fname, $lname, $leg, $cel, $vhextra, $vhinhabil, $vhhabil, $a) {
+    $ch = new Chofer();
+    $ch->FirstName = $fname;
+    $ch->LastName = $lname;
+    $ch->Celular = $cel;
+    $ch->Legajo = $leg;
+    $ch->ValorHoraExtra = str_replace(",", ".", $vhextra);
+    $ch->ValorHoraHabil = str_replace(",", ".", $vhhabil);
+    $ch->ValorHoraInhabil = str_replace(",", ".", $vhinhabil);
+    $ch->Active = $a;
+    return $ch->Insert();
+}
+
+function DeleteChofer($choferId) {
+
+    $ch = new Chofer();
+    $ch->ChoferId = $choferId;
+    return $ch->Delete();
+}
+
+function LoadChoferes($hasUpdate, $hasInsert) {
+    $hasIns = $hasInsert == 'true' ? true : false;
+    $hasUpd = $hasUpdate == 'true' ? true : false;
+    $table = "<div style='text-align:right;width:640px; border:solid 0px black;padding:5px;'>" .
+            "<div class='dlink'>";
+
+    if ($hasIns) {
+        $table.="<label class='link' onclick='PopinInsertChofer(event);'>Agregar</label>";
+    }
+    $table.="</div></div>";
+    $table .= "<table cellpadding='2' cellspacing='2' class='tableList' style='width:640px''>";
+    $table .= "<tr class='listtitle'>";
+    $table .= "<td>Nombre</td><td>Apellido</td><td>Legajo</td><td>Celular</td><td>Acciones</td>";
+    $table .= "</tr>";
+    $choferSearch = new Chofer();
+
+    $choferes = $choferSearch->Search();
+
+    $i = 0;
+    foreach ($choferes as $ch) {
+        if ($i % 2 == 0)
+            $class = "listitemeven";
+        else
+            $class = 'listitemuneven';
+        $table .= "<tr class='" . $class . "'>";
+        $table .= "<td>" . $ch->FirstName . "</td><td>" . $ch->LastName . "</td><td>" . $ch->Legajo . "</td><td>" . $ch->Celular . "</td>";
+        $table .="<td style='width:50px;text-align:center;'><table cellpadding='0' cellspacing='0' style='border:0px;text-align:center;' align='center'><tr>";
+        if ($hasUpd) {
+            $table .= "<td><label class='link' onclick=\"EditChofer(event,'" . $ch->ChoferId . "');\">Editar</label></td>";
+            $table .= "<td><label class='link' onclick=\"DeleteChofer('" . $ch->ChoferId . "');\">Borrar</label></td>";
+        } else {
+            $table .= '<td>&nbsp;</td>';
+            $table .= '<td>&nbsp;</td>';
+        }
+        $table .= "</tr></table></td>";
+        $table .= "</tr>";
+        $i++;
+    }
+    $table.="</table>";
+    return $table;
+}
+?>
+<?php include "../include/header.php"; ?>
+<?php include "../include/menu.php"; ?>
+<script>
+<?php
+sajax_show_javascript();
+?>
+</script>
+<?php SecurityPage(); ?>
+
+<script type="text/javascript" src="choferes.js"></script>
+<div id="content">
+    <div class="titlePag">Choferes</div>
+    <div id="tblChoferes"></div>
+    <div id="divChofer" style="width:400px;height:270px;display:none;">
+        <div style="padding:5px;">
+            <table cellpadding='0' cellspacing='4'>
+                <tr>
+                    <td class='label'>Legajo:</td>
+                    <td><input type ='text' id='txtLegajo' class='textbox'/></td>
+                </tr>
+                <tr>
+                    <td class='label'>Nombre:</td>
+                    <td><input type ='text' id='txtFirstName' class='textbox'/></td>
+                </tr>
+                <tr>
+                    <td class='label'>Apellido:</td>
+                    <td><input type ='text' id='txtLastName' class='textbox'/></td>
+                </tr>
+                <tr>
+                    <td class='label'>Celular:</td>
+                    <td><input type ='text' id='txtCelular' class='textbox'/></td>
+                </tr>
+
+
+                <tr>
+                    <td class='label'>Valor Hora Extra:</td>
+                    <td><input type ='text' id='txtVHExtra' class='textbox'/></td>
+                </tr>
+                <tr>
+                    <td class='label'>Valor Hora Inhábil:</td>
+                    <td><input type ='text' id='txtVHInhabil' class='textbox'/></td>
+                </tr>
+                <tr>
+                    <td class='label'>Valor Hora Hábil:</td>
+                    <td><input type ='text' id='txtVHHabil' class='textbox'/></td>
+                </tr>
+                <tr>
+                    <td class='label'>Activo:</td>
+                    <td><input type ='checkbox' id='chk_Active' class='textbox'/></td>
+                </tr>
+            </table>
+            <div style="text-align:center;vertical-align: center;padding-top:10px;">
+                <input type="button" id="btnSave" name="btnSave" value="Guardar" onclick="SaveChofer();" />
+                &nbsp;
+                <input type="button" id="btnCancel" name="btnCancel" value="Cancelar" onclick="Cancel();" />
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="hdnChoferId" value="0"/>
+<?php include "../include/footer.php"; ?>

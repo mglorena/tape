@@ -1,0 +1,26 @@
+
+CREATE TABLE IF NOT EXISTS   `Reservas` (
+  `ReservaId` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `Destino` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `Solicitante` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `EmailSolicitante` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `AutorizadoPor` varchar(115) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `VehiculoId` tinyint(4) NOT NULL,
+  `FechaInicio` datetime NOT NULL,
+  `HoraSalida` datetime DEFAULT NULL,
+  `FechaFin` datetime NOT NULL,
+  `HoraLlegada` datetime DEFAULT NULL,
+  `Observacion` varchar(400) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `FileName` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `NumPasajeros` int(11) DEFAULT NULL,
+  `EstadoId` tinyint(4) NOT NULL,
+  `Distancia` int(4) DEFAULT '1',
+  `PrecioCombustible` float DEFAULT NULL,
+  `FechaCreacion` datetime NOT NULL,
+  `Mantenimiento` bit(1) DEFAULT b'0',
+  `GastoTotal` float DEFAULT NULL,
+  `UserId` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `Papelera` bit(1) NOT NULL DEFAULT b'0',
+  `FechaMod` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`ReservaId`)
+) ENGINE=InnoDB AUTO_INCREMENT=233 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;

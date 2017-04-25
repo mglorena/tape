@@ -1,0 +1,109 @@
+<?php
+ 
+session_cache_expire( 20 );
+session_start(); // NEVER FORGET TO START THE SESSION!!! // es necesaria en todas las páginas para poder consultar las variables en la session.
+$inactive = 1200;
+if(isset($_SESSION['start']) ) {
+	$session_life = time() - $_SESSION['start'];
+	if($session_life > $inactive){
+		 echo "<script>window.location = '".$host ."login.php'</script>";
+	}
+}
+$_SESSION['start'] = time();
+if (!isset($_SESSION['S_username'])) {
+    // no estoy logeada, no existe username en la session
+    echo "<script>window.location = '".$host ."login.php'</script>";
+    exit();
+}
+
+
+/*
+require_once ('../class/cerrors.php');
+require_once("conf.php");
+
+function SendJsError($ex, $pageName, $object) {
+
+    $errorS = new Errors();
+    return $errorS->SendJsErrorMessage($ex, $pageName, $object);
+}*/
+?>
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>Tape - Dirección General de Obras y Servicios</title>
+        <?php
+        echo '<link rel="stylesheet" href="' . $host . 'css/style.css" type="text/css" />';
+        ?>
+        <?php
+        echo '<link rel="stylesheet" href="' . $host . 'css/stylemultiselect.css" type="text/css" />';
+        ?>
+        <?php
+        echo '<link rel="stylesheet" href="' . $host . 'css/jquery.multiselect.css" type="text/css" />';
+        ?>
+        <?php
+        echo '<link rel="stylesheet" href="' . $host . 'css/prettify.css" type="text/css" />';
+        ?>
+        <?php
+        echo '<link rel="stylesheet" href="' . $host . 'css/jquery.ui.datepicker.css" type="text/css" />';
+        ?>
+        <?php
+        echo '<script type="text/javascript" src="' . $host . 'js/jquery.js"></script>';
+        ?>
+        <?php
+        echo '<script type="text/javascript" src="' . $host . 'js/functions.js"></script>';
+        ?>
+        <?php
+        echo '<script type="text/javascript" src="' . $host . 'js/popin.js"></script>';
+        ?>
+        <?php
+        echo '<script type="text/javascript" src="' . $host . 'js/humane.js"></script>';
+        ?>
+        <?php
+        echo '<script type="text/javascript" src="' . $host . 'js/smoke.js"></script>';
+        ?>
+        <?php
+        // echo '<script type="text/javascript" src="'.$host.'js/OrderAndFilter.js"></script>';
+        ?>
+        <?php
+        // echo '<script type="text/javascript" src="'.$host.'js/OrderAndFilterMethods.js"></script>';
+        ?>
+        <?php
+        echo '<script type="text/javascript" src="' . $host . 'js/of.js"></script>';
+        ?>
+        <?php
+        echo '<script type="text/javascript" src="' . $host . 'js/mask.js"></script>';
+        ?>
+        <?php
+        echo '<script type="text/javascript" src="' . $host . 'js/jquery-ui.js"></script>';
+        ?>
+        <?php
+        echo '<script type="text/javascript" src="' . $host . 'js/jquery.multiselect.min.js"></script>';
+        ?>
+        <?php
+        echo '<script type="text/javascript" src="' . $host . 'js/prettify.js"></script>';
+        ?>
+        <?php
+        echo '<script type="text/javascript" src="' . $host . 'js/datef.js"></script>';
+        ?>
+    </head>
+    <body>
+        <div align="right" style="width:99%">
+            <?php
+            echo $_SESSION['S_username']."&nbsp;";
+            echo '<a href="' . $host . 'logout.php">Salir</a>';
+            ?>
+
+        </div>
+        <div id="header">
+            <?php
+            echo '<img src="' . $host . 'images/logo.png" border="0"></img>';
+            ?>
+
+        </div>
+        <?php
+        /* echo $_SERVER["SERVER_NAME"];
+          echo phpinfo(); */
+        ?>
+

@@ -1,0 +1,346 @@
+<?php
+require_once ('../class/cutil.php');
+require_once ('../class/creservas.php');
+require_once ('../class/cchoferes.php');
+require_once ('../class/cvehiculos.php');
+require_once ('../class/ctipovehiculo.php');
+require_once ('../class/cestadosreservas.php');
+require_once ('../class/cdump.php');
+require_once ('../include/conf.php');
+require("../class/csajax.php");
+
+
+$sajax_request_type = "POST";
+
+sajax_init();
+sajax_export("EditReserva", "SaveReserva", "LoadReservas", "DeleteReserva", "InsertReserva", "GetDropDowns","GetReservasSaved", "SendJsError");
+sajax_handle_client_request();
+
+function SecurityPage() {
+    $rulesIds = explode(",", $_SESSION['S_rules']);
+    if (!in_array(13, $rulesIds)) { // ver la pagina reservas
+        echo "<script>window.location ='" . $host . "noautorization.php?p=Reservas';</script>";
+    }
+    echo "<script>";
+    if (!in_array(14, $rulesIds)) // editor o borrar
+        echo "var hasUpdate =false;";
+    else
+        echo "var hasUpdate =true;";
+    if (!in_array(15, $rulesIds)) // insertar 
+        echo "var hasInsert =false;";
+    else
+        echo "var hasInsert =true;";
+    echo "</script>";
+}
+function GetReservasSaved($fI,$fF,$reId)
+{
+    $u = new Util();
+    
+    $reservaSearch = new Reserva();
+    try {
+        $fI = $u->strinformatdate($fI);
+    $fF = $u->strinformatdate($fF);
+        $reservas = $reservaSearch->GetListReservas($fI, $fF, $reId);
+        return $reservas;
+    }
+    catch(Exception $ex)
+    {
+        $error = new Errors();
+        $error->SendErrorMessage($ex, "reservas.php - GetReservasSaved", $reservaSearch);
+    }
+    return null;
+}
+function GetDropDowns($veId, $choferesIds,$fI,$fF,$nump,$reId) {
+    $ve = new Vehiculo();
+    $ch = new Chofer();
+    $u = new Util();
+    $response = array("1" => $ve->GetDropDownDispo($u->strinformatdate($fI), $u->strinformatdate($fF), $nump,$reId), "2" => $veId, "3" => $ch->GetChoferDispo($choferesIds,$u->strinformatdate($fI), $u->strinformatdate($fF),$reId), "4" => $choferesIds);
+//    echo do_dump($response);
+    return $response;
+}
+
+function EditReserva($reservaId) {
+    $reservaSearch = new Reserva();
+    try {
+        $reservaSearch->ReservaId = $reservaId;
+        $reserva = $reservaSearch->GetById();
+
+        foreach ($reserva as $re) {
+            $des = $re->Destino;
+            $sol = $re->Solicitante;
+            $esol = $re->EmailSolicitante;
+            $auto = $re->AutorizadoPor;
+            $chIds = $re->ChoferesIds;
+            $veId = $re->VehiculoId;
+            $feIni = $re->FechaInicio;
+            $horaIni = $re->HoraSalida;
+            $feFin = $re->FechaFin;
+            $horaFin = $re->HoraLlegada;
+            $obs = $re->Observacion;
+            $file = $re->FileName;
+            $np = $re->NumPasajeros;
+            $eId = $re->EstadoId;
+            //$dist = $re->Distancia;
+            //$pcmbId = $re->PrecioCombustible;
+            //$feCre = $re->FechaCreacion;
+            $mant = $re->Mantenimiento;
+            $gasto = $re->GastoTotal;
+        }
+    } catch (Exception $ex) {
+        $error = new Errors();
+        $error->SendErrorMessage($ex, "reservas.php - EditReserva", $reservaSearch);
+    }
+
+    $return = array("1" => $des, "2" => $sol, "3" => $esol, "4" => $auto, "5" => $chIds, "6" => $veId,
+        "7" => $feIni, "8" => $horaIni, "9" => $feFin, "10" => $horaFin, "11" => $obs,
+        "12" => $file, "13" => $np, "14" => $eId,
+        "15" => $mant, "16" => $gasto, "17" => $reservaId);
+
+    return $return;
+}
+
+function SaveReserva($reservaId, $des, $sol, $esol, $auto, $chIds, $veId, $feIni, $horaIni, $feFin, $horaFin, $np, $eId, $obs, $file, $mant) {
+    $u = new Util();
+    $re = new Reserva();
+    $re->Destino = $des;
+    $re->Solicitante = $sol;
+    $re->EmailSolicitante = $esol;
+    $re->AutorizadoPor = $auto;
+    $re->ChoferesIds = $chIds;
+    $re->VehiculoId = $veId;
+    $re->FechaInicio = $u->strinformatdate($feIni);
+    $re->HoraSalida = '0000-00-00 ' . $horaIni;
+    $re->FechaFin = $u->strinformatdate($feFin);
+    $re->HoraLlegada = '0000-00-00 ' . $horaFin;
+    $re->Observacion = $obs;
+    $re->FileName = $file;
+    $re->NumPasajeros = $np;
+    $re->EstadoId = $eId;
+    $re->Mantenimiento = $mant;
+    $re->ReservaId = $reservaId;
+
+    return $re->Save();
+}
+
+function InsertReserva($des, $sol, $esol, $auto, $chIds, $veId, $feIni, $horaIni, $feFin, $horaFin, $np, $eId, $obs, $file, $mant) {
+    $re = new Reserva();
+    $u = new Util();
+    $re->Destino = $des;
+    $re->Solicitante = $sol;
+    $re->EmailSolicitante = $esol;
+    $re->AutorizadoPor = $auto;
+    $re->ChoferesIds = $chIds;
+    $re->VehiculoId = $veId;
+    $re->FechaInicio = $u->strinformatdate($feIni);
+    $re->HoraSalida = '0000-00-00 ' . $horaIni;
+    $re->FechaFin = $u->strinformatdate($feFin);
+    $re->HoraLlegada = '0000-00-00 ' . $horaFin;
+    $re->Observacion = $obs;
+    $re->FileName = $file;
+    $re->NumPasajeros = $np;
+    $re->EstadoId = $eId;
+    $re->Mantenimiento = $mant;
+    return $re->Insert();
+}
+
+function DeleteReserva($reservaId) {
+
+    $ve = new Reserva();
+    $ve->ReservaId = $reservaId;
+    return $ve->Delete();
+}
+
+function LoadReservas($hasUpdate, $hasInsert,$mes,$anio,$type) {
+    $hasIns = $hasInsert == 'true' ? true : false;
+    $hasUpd = $hasUpdate == 'true' ? true : false;
+    $bar = "<div style='text-align:right;width:940px; border:solid 0px black;padding:5px;'>" .
+            "<div class='dlink'><table cellpadding='2' cellspacing='2' align='right'><tr>";
+
+    if ($hasIns) {
+        $bar.="<td><label class='link' onclick='PopinInsertReserva(event);'>Agregar</label></td>";
+    }
+    $bar.="<td style='width:10px;'></td> <td><label class='link' onclick='ImprimirReserva();'>Imprimir</label></td>";
+    $bar.="</tr></table></div></div>";
+    
+    $table .= "<table cellpadding='2' cellspacing='2' class='tableList' style='width:940px''>";
+    $table .= "<tr class='listtitle'>";
+
+    $table .= "<td  style=\"text-align:center;\">Solicitante</td>
+        <td  style=\"text-align:center;\">Destino</td>
+        <td  style=\"text-align:center;\">Vehiculo</td>
+        <td  style=\"text-align:center;\">Periodo</td>
+        <td  style=\"text-align:center;\">Choferes</td>
+        <td  style=\"text-align:center;\">Estado</td>
+        
+        <td  style=\"text-align:center;\" id=\"tdAcc\">Acciones</td>";
+    $table .= "</tr>";
+    $reservaSearch = new Reserva();
+//<td  style=\"text-align:center;\">Estado</td>
+    $reservas = $reservaSearch->GetForCalendar($mes, $anio, $type);
+
+    $i = 0;
+    $class = "";
+    foreach ($reservas as $ve) {
+        if ($i % 2 == 0)
+            $class = "listitemeven";
+        else
+            $class = 'listitemuneven';
+        $er = new EstadoReserva();
+
+        $table .= "<tr class='" . $class . "'>";
+        $table .= "<td>" . $ve['Solicitante'] . "</td>
+                   <td>" . $ve['Destino'] . "</td>
+                   <td>" . $ve['Vehiculo'] . "</td>
+                   <td>" . $ve['FechaInicio'] . " - " .$ve['FechaFin']  . " horario:   " . $ve['HoraSalida'] . " - " . $ve['HoraLlegada'] . " hrs.</td>
+                   <td>" . $ve['ChoferName'] . "</td>
+                
+                   <td>" .( $ve['Estado'] =='Confirmada'?'<font color=green>'.$ve['Estado']:'<font color=red>'.$ve['Estado'] ). "</font></td>";
+        //   <td>" . $ve['FileName'] . "</td>                       
+        $table .="<td id=\"tdAcc1\" style='width:50px;text-align:center;'><table id='tblActions' cellpadding='0' cellspacing='0' style='border:0px;text-align:center;' align='center'><tr>";
+        if ($hasUpd) {
+            $table .= "<td style='border:none;'><label style='border:none;' class='link' onclick=\"EditReserva(event,'" . $ve['ReservaId'] . "');\">Editar</label></td>";
+            $table .= "<td style='border:none;'><label class='link' onclick=\"DeleteReserva('" . $ve['ReservaId'] . "');\">Borrar</label></td>";
+        } else {
+            $table .= '<td>&nbsp;</td>';
+            $table .= '<td>&nbsp;</td>';
+        }
+        $table .= "</tr></table></td>";
+        $table .= "</tr>";
+        $i++;
+    }
+    $table.="</table>";
+    if($i==0)
+    {
+        $table ="<div style='text-align:center;color:navy;font-size:16px; font-weight:bold;'>No hay reservas</div>";
+    }
+    
+
+    $response = array("1" => $bar.$table, "2" => $reservas);
+    return $response;
+}
+?>
+<?php include "../include/header.php"; ?>
+<?php include "../include/menu.php";
+?>
+<script>
+<?php
+sajax_show_javascript();
+?>
+</script>
+<?php SecurityPage(); ?>
+<?php GetDropDowns("0","0",'02/11/2012','05/11/2012',23,0); ?>
+<script type="text/javascript" src="reservas.js"></script>
+<link type="text/css" rel="stylesheet" href="../css/jquery.tooltip.css" />
+<script type="text/javascript" src="../js/jquery.tooltip.min.js"></script>
+<div id="content">
+    <div class="titlePag">Reservas</div>
+    
+      <div style="padding:5px;">
+                Mes: <select id="ddlMes" >
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+                Año: 
+                <select id="ddlAnio" >
+                    <option value="2012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                </select>
+                Tipo Vehiculo:
+    <?php    $ve = new TipoVehiculo();
+         $barra .=$ve->GetDropDown();
+         echo $barra .="&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' value='Ver' onclick='GetCalendar();'/> </div></div>";
+         ?>
+       
+        
+    </div>
+    <script>
+        var s= document.getElementById('ddlTipoVehiculo');
+        s.options[s.options.length]= new Option('Todos', '0');
+    </script>
+    <div id="tblReservas"></div>
+
+
+
+    <div id="divReserva" style="width:680px;height:530px;display:none;">
+        <div style="padding:15px;">
+               <div style="float:left;width:122px;" class='label'>Fecha Salida:</div>
+            <div style="float:left;width:72px;"><input type="text" id="txtFechaSalida" class="textbox" style="width:70px;"/></div>
+            <div style="float:left;width:113px;text-align: right;" class='label'>Hora Salida:&nbsp;</div>
+            <div style="float:left;width:42px;"><input type="text" id="txtHoraSalida" class="textbox" style="width:40px;"/></div>
+             <div style="clear:both;height:5px;"></div>
+            
+            <div style="float:left;width:122px;" class='label'>Fecha Llegada:</div>
+            <div style="float:left;width:72px;"><input type="text" id="txtFechaLlegada" class="textbox" style="width:70px;"/></div>
+            <div style="float:left;width:113px;text-align: right;" class='label'>Hora Llegada:&nbsp;</div>
+            <div style="float:left;width:42px;"><input type="text" id="txtHoraLlegada" class="textbox" style="width:40px;"/></div>
+            <div style="clear:both;height:5px;"></div>
+             <div style="float:left;width:122px;" class='label'>Cant Pasajeros:</div>
+            <div style="float:left;width:375px;"><input type="text" id="txtNumPasajeros" class="textbox" style="width:30px;"/><font color="red"> Debe considerar los choferes que sean necesarios.</font></div>
+            <div style="clear:both;height:5px;"></div>
+            <div style="float:left;width:200px;border:0px solid coral;" id="divInfo"></div>
+            
+            <div style="clear:both;height:5px;"></div>
+            <div id="divInfoReserva" style="display:none;">
+            <div style="float:left;width:122px;" class='label'>Destino:</div>
+            <div style="float:left;width:480px;" class='label'><input type ='text' id='txtDestino' class='textbox' style="width:480px;"/></div>
+            <div style="clear:both;height:5px;"></div>
+            <div id="InfoPages" style="float:left;width:600px;text-align:end;display:none;"></div>
+            <div style="clear:both;height:5px;"></div>
+            <div style="float:left;width:122px;" class='label'>Solicitante:</div>
+            <div style="float:left;width:480px;" class='label'><input type ='text' id='txtSolicitante' class='textbox' style="width:480px;"/></div>
+            <div style="clear:both;height:5px;"></div>
+            <div style="float:left;width:122px;" class='label'>Email Solicitante:</div>
+            <div style="float:left;width:480px;" class='label'><input type ='text' id='txtEmailSolicitante' class='textbox' style="width:480px;"/></div>
+            <div style="clear:both;height:5px;"></div>
+            <div style="float:left;width:122px;" class='label'>Autorizado Por:</div>
+            <div style="float:left;width:480px;"><input type="text" id="txtAutorizadoPor" class="textbox" style="width:480px;"/></div>
+            <div style="clear:both;height:5px;"></div>
+          
+            <div style="float:left;width:122px;" class='label'>Chofer/es:</div>
+            <div style="float:left;width:235px;" class='label'><div style="display:block;" id="divDdlChoferes"></div></div>
+            <div style="clear:both;height:5px;"></div>
+            <div style="float:left;width:122px;" class='label'>Vehichulo:</div>
+            <div style="float:left;width:235px;"><div id="divDdlVehiculos"></div></div>
+            <div style="clear:both;height:5px;"></div>
+          
+            <div style="float:left;width:122px;" class='label'>Mantenimiento:</div>
+            <div style="float:left;width:235px;"><input type="checkbox" id="chkMantenimiento" class="textbox"/></div>
+            <div style="clear:both;height:5px;"></div>
+            <div style="float:left;width:122px;" class='label'>Estado:</div>
+            <div style="float:left;width:235px;"><select id="ddlEstado">
+                    <option value="1">Pendiente</option>
+                    <option value="2">Confirmada</option>
+                </select></div>
+            <div style="clear:both;height:5px;"></div>
+          <!--  <div style="float:left;width:122px;" class='label'>Costo Total:</div>
+            <div style="float:left;width:235px;"><label id="lblCostoTotal"></label>&nbsp;<input type="button" value="Calcular Costo"></div>
+            <div style="clear:both;height:5px;"></div>-->
+            <div style="float:left;width:122px;" class='label'>Observación:</div>
+            <div style="float:left;width:480px;"><textarea id="txtObservacion" class="textbox" size="3" style="resize:none;margin: 2px; width: 480px; height: 86px;"></textarea></div>
+            <div style="clear:both;height:5px;"></div>
+           <!-- <div style="float:left;width:122px;" class='label'>Adjuntos:</div>
+            <div style="float:left;width:235px;"><label id="lblAdjuntos"></label></div>
+            <div style="clear:both;height:5px;"></div>-->
+           
+            <div style="text-align:center;vertical-align: center;padding-top:10px;">
+                <input type="button" id="btnSave" name="btnSave" value="Guardar" onclick="SaveReserva();" />
+                &nbsp;
+                <input type="button" id="btnCancel" name="btnCancel" value="Cancelar" onclick="Cancel();" />
+            </div>
+           </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="hdnReservaId" value="0"/>
+<?php include "../include/footer.php"; ?>
