@@ -15,8 +15,7 @@ function Import() {
         if ($i->CargaMes($fp)) {
             echo '<center><h3>' . "El archivo $chivo fue importado con exito" . '</h3></center>';
             echo '<center><a href="carga.php"> Volver </a></center>';
-        }
-        else
+        } else
             echo '<center><h3>' . "El archivo $chivo no pudo ser importado con exito" . '</h3></center>';
         echo "1";
         $i->GenerarInforme();
@@ -35,18 +34,18 @@ function Import() {
 <?php include "../include/header.php"; ?>
 <?php include "../include/menu.php"; ?>
 <div id="content"> 
-   
+
 
     <div id="fi-form"></div>
     <script>
-        Ext.onReady(function() {
+        Ext.onReady(function () {
 
 //  Class which shows invisible file input field.
             if (window.location.href.indexOf('debug') !== -1) {
                 Ext.getBody().addCls('x-debug');
             }
 
-            var msg = function(title, msg) {
+            var msg = function (title, msg) {
                 Ext.Msg.show({
                     title: title,
                     msg: msg,
@@ -69,7 +68,7 @@ function Import() {
                     msgTarget: 'side',
                     labelWidth: 50
                 },
-                items: [ {
+                items: [{
                         xtype: 'filefield',
                         id: 'form-file',
                         emptyText: 'Seleccione un archivo',
@@ -79,13 +78,13 @@ function Import() {
                     }],
                 buttons: [{
                         text: 'Importar',
-                        handler: function() {
+                        handler: function () {
                             var form = this.up('form').getForm();
                             if (form.isValid()) {
                                 form.submit({
                                     url: 'file-upload.php',
                                     waitMsg: 'Subiendo y procesando archivo...',
-                                    success: function(fp, o) {
+                                    success: function (fp, o) {
                                         msg('Importe Existoso', 'Archivo importado "' + o.result.file + '"');
                                     }
                                 });
@@ -93,7 +92,7 @@ function Import() {
                         }
                     }, {
                         text: 'Limpiar',
-                        handler: function() {
+                        handler: function () {
                             this.up('form').getForm().reset();
                         }
                     }]

@@ -41,9 +41,9 @@ class Info {
         $dptos = $this->GetDepartamentos();
         $select = "<select id=\"ddlDepartamento\" >";
         foreach ($dptos as $t) {
-            $select.= "<option value='" . $t['id_depto'] . "' >" . $t['NombreCompleto'] . "</option>";
+            $select .= "<option value='" . $t['id_depto'] . "' >" . $t['NombreCompleto'] . "</option>";
         }
-        $select.="</select>";
+        $select .= "</select>";
         return $select;
     }
 
@@ -68,9 +68,9 @@ class Info {
         $costos = $this->GetCostos();
         $select = "<select id=\"ddlCostos\" >";
         foreach ($costos as $c) {
-            $select.= "<option value='" . $c['id_centro'] . "' >" . $c['nombre'] . "</option>";
+            $select .= "<option value='" . $c['id_centro'] . "' >" . $c['nombre'] . "</option>";
         }
-        $select.="</select>";
+        $select .= "</select>";
         return $select;
     }
 
@@ -95,11 +95,11 @@ class Info {
 
     function CargaMes($fp) {
         try {
-            $ddn = 0.56;
-            $ddi = 0.70;
-            $local = 0.55;
+            $ddn = 0.335;
+            $ddi = 0.335;
+            $local = -0.21;
             $cell = 0.335;
-            $otro = 0.70;
+            $otro = 0.1244;
             $usuario = Conf::BD_USER;
             $clave = Conf::BD_PASS;
             $url = Conf::BD_SERVER;
@@ -109,9 +109,10 @@ class Info {
             $numint = "";
             $mes = null;
             $anio = null;
-            $conexion = mysql_connect($url, $usuario, $clave);
-            mysql_select_db($base, $conexion);
-            mysql_query("delete from llamadas;", $conexion);
+            $conexion = mysqli_connect($url, $usuario, $clave);
+            mysqli_select_db($base, $conexion);
+            //mysqli_query(, );
+            mysqli_query($conexion, "delete from llamadas;");
             while (!feof($fp)) {
                 $linea = fgets($fp, 1024);
                 $campo = explode(";", $linea);
@@ -120,25 +121,26 @@ class Info {
                 if ($fec[2] < 100) {
                     $fec[2] = "20$fec[2]";
                 };
-                if($fec[2] == 20) break;
+                if ($fec[2] == 20)
+                    break;
                 $mes = $fec[1];
                 $anio = $fec[2];
                 $campo[7] = "$fec[2]" . '/' . "$fec[1]" . '/' . "$fec[0]";
                 if ($numint != $campo[5]) {
                     if ($centro != $campo[3]) {
                         $query = "select id_centro from emerald2.centros where centrocosto='$campo[3]';";
-                        $result = mysql_query($query, $conexion);
-                        if (mysql_error()) {
+                        $result = mysqli_query($conexion, $query);
+                        if (mysqli_error($conexion)) {
                             $error = new Errors();
-                            $error->SendMysqlErrorMessage(mysql_error(), "cinfo.php", "cargames - select centros", $query . "\n" . $linea);
+                            $error->SendMysqlErrorMessage(mysqli_error($conexion), "cinfo.php", "cargames - select centros", $query . "\n" . $linea);
                         } else {
-                            if (!($centro1 = mysql_fetch_row($result))) {
-                                mysql_query("insert into centros (centrocosto) values ('$campo[3]');", $conexion);
-                                $result = mysql_query("select id_centro from emerald2.centros where centrocosto='$campo[3]';", $conexion);
-                                $centro1 = mysql_fetch_row($result);
-                                if (mysql_error()) {
+                            if (!($centro1 = mysqli_fetch_row($result))) {
+                                mysqli_query($conexion, "insert into centros (centrocosto) values ('$campo[3]');");
+                                $result = mysqli_query($conexion, "select id_centro from emerald2.centros where centrocosto='$campo[3]';");
+                                $centro1 = mysqli_fetch_row($result);
+                                if (mysqli_error($conexion)) {
                                     $error = new Errors();
-                                    $error->SendMysqlErrorMessage(mysql_error(), "cinfo.php", "cargames - insert centros", $query . "\n" . $linea);
+                                    $error->SendMysqlErrorMessage(mysqli_error($conexion), "cinfo.php", "cargames - insert centros", $query . "\n" . $linea);
                                 }
                             };
                         }
@@ -147,18 +149,18 @@ class Info {
                     };
                     if ($depa != $campo[2]) {
                         $query = "select id_depto from emerald2.departamentos where depto='$campo[2]';";
-                        $result = mysql_query($query, $conexion);
-                        if (mysql_error()) {
+                        $result = mysqli_query($conexion, $query);
+                        if (mysqli_error($conexion)) {
                             $error = new Errors();
-                            $error->SendMysqlErrorMessage(mysql_error(), "cinfo.php", "cargames - select deptos", $query . "\n" . $linea);
+                            $error->SendMysqlErrorMessage(mysqli_error($conexion), "cinfo.php", "cargames - select deptos", $query . "\n" . $linea);
                         } else {
-                            if (!($depa1 = mysql_fetch_row($result))) {
-                                mysql_query("insert into emerald2.departamentos (depto) values ('$campo[2]');", $conexion);
-                                $result = mysql_query("select id_depto from emerald2.departamentos where depto='$campo[2]';", $conexion);
-                                $depa1 = mysql_fetch_row($result);
-                                if (mysql_error()) {
+                            if (!($depa1 = mysqli_fetch_row($result))) {
+                                mysqli_query($conexion, "insert into emerald2.departamentos (depto) values ('$campo[2]');");
+                                $result = mysqli_query($conexion, "select id_depto from emerald2.departamentos where depto='$campo[2]';");
+                                $depa1 = mysqli_fetch_row($result);
+                                if (mysqli_error($conexion)) {
                                     $error = new Errors();
-                                    $error->SendMysqlErrorMessage(mysql_error(), "cinfo.php", "cargames - insert deptos", $query . "\n" . $linea);
+                                    $error->SendMysqlErrorMessage(mysqli_error($conexion), "cinfo.php", "cargames - insert deptos", $query . "\n" . $linea);
                                 }
                             };
                             $depa = $campo[2];
@@ -167,10 +169,10 @@ class Info {
                     };
                     if ($campo[12] != "ENTRN") {
                         $query = "insert into emerald2.internos (interno,usuario,id_centro,id_depto,mes,anio) values ('$campo[5]','$campo[6]','$id_costo','$id_depa','$mes',$anio);";
-                        mysql_query($query, $conexion);
-                        if (mysql_error()) {
-                            $error = new Errors();
-                            $error->SendMysqlErrorMessage(mysql_error(), "cinfo.php", "cargames - insert internos", $query . "\n" . $linea);
+                        mysqli_query($conexion, $query);
+                        if (mysqli_error($conexion)) {
+                          //  $error = new Errors();
+                          //  $error->SendMysqlErrorMessage(mysqli_error($conexion), "cinfo.php", "cargames - insert internos", $query . "\n" . $linea);
                         }
                         $numint = $campo[5];
                         //echo "$numint...ok ";
@@ -196,21 +198,22 @@ class Info {
 
                 if ($campo[12] != "ENTRN") {
                     $query = "insert into emerald2.llamadas (interno,fecha,hora,tiempo,nromarcado,localidad,tipo,costo) values ($campo[5],'$campo[7]','$campo[8]','$campo[9]','$campo[10]','$campo[11]','$campo[12]',$campo[14]+$ivan);";
-                    mysql_query($query, $conexion);
-                    if (mysql_error()) {
+                    mysqli_query($conexion, $query);
+                    if (mysqli_error($conexion)) {
                         $error = new Errors();
-                        $error->SendMysqlErrorMessage(mysql_error(), "cinfo.php", "cargames - insert llamadas", $query . "\n" . $linea);
+                        $error->SendMysqlErrorMessage(mysqli_error($conexion), "cinfo.php", "cargames - insert llamadas", $query . "\n" . $linea);
+                        return;
                     }
                 };
             };
 
             $query = "call emerald_updateForCobro($anio,$mes);";
-            mysql_query($query, $conexion);
-            if (mysql_error()) {
+            mysqli_query($conexion, $query);
+            if (mysqli_error($conexion)) {
                 $error = new Errors();
-                $error->SendMysqlErrorMessage(mysql_error(), "cinfo.php", "cargames - emerald_UpdateForCobro", $query . "\n" . $linea);
+                $error->SendMysqlErrorMessage(mysqli_error($conexion), "cinfo.php", "cargames - emerald_UpdateForCobro", $query . "\n" . $linea);
             }
-            mysql_close($conexion);
+            mysqli_close($conexion);
         } catch (Exception $ex) {
             return false;
         }
@@ -226,16 +229,19 @@ class Info {
             $directorio = "/var/www/tape/emerald"; /* ubicaci�n del sistema dentro del servidor */
             $datos2 = "$directorio/datos";
             $base = Conf::BD_NAME;
-            $conexion = mysql_connect($url, $usuario, $clave);
-            mysql_select_db($base, $conexion);
-
+            $conexion = mysqli_connect($url, $usuario, $clave);
+            mysqli_select_db($base, $conexion);
+            
+            $error = new Errors();
+            $error->SendMysqlErrorMessage("mysqli_error($conexion)", "cinfo.php", "genera informe prueba - select llamadas", $query . "\n" . $linea);
+            
             $q = "";
-            $result = mysql_query("select interno,fecha,sec_to_time(sum(time_to_sec(tiempo))),sum(costo),count(interno) from emerald2.llamadas group by(interno);", $conexion);
-            if (mysql_error()) {
+            $result = mysqli_query($conexion, "select interno,fecha,sec_to_time(sum(time_to_sec(tiempo))),sum(costo),count(interno) from emerald2.llamadas group by(interno);");
+            if (mysqli_error($conexion)) {
                 $error = new Errors();
-                $error->SendMysqlErrorMessage(mysql_error(), "cinfo.php", "genera informe - select llamadas", $query . "\n" . $linea);
+                $error->SendMysqlErrorMessage(mysqli_error($conexion), "cinfo.php", "genera informe - select llamadas", $query . "\n" . $linea);
             }
-            while ($llamada = mysql_fetch_row($result)) {
+            while ($llamada = mysqli_fetch_row($result)) {
 
                 $fecha = explode("-", $llamada[1]);
                 $chivo = "$datos2/$llamada[0]$fecha[1]$fecha[0].txt";
@@ -244,40 +250,40 @@ class Info {
                 $q = fputs($fp, "=============================================================================\n");
                 $q = fputs($fp, "====     INFORME DE LLAMADAS TELEFONICAS DEL INTERNO $llamada[0] DEL MES $fecha[1]/$fecha[0]     ====\n");
                 $q = fputs($fp, "=============================================================================\n");
-                $result1 = mysql_query("select usuario,id_centro,id_depto from emerald2.internos where interno='$llamada[0]' and mes='$fecha[1]' and anio='$fecha[0]';", $conexion);
-                $inter = mysql_fetch_row($result1);
-                $result2 = mysql_query("select centrocosto from emerald2.centros where id_centro='$inter[1]';", $conexion);
-                $centro = mysql_fetch_row($result2);
-                $result3 = mysql_query("select depto from emerald2.departamentos where id_depto='$inter[2]';", $conexion);
-                $depa = mysql_fetch_row($result3);
-                $result4 = mysql_query("select fecha,hora,tiempo,costo,tipo,nromarcado,localidad from emerald2.llamadas where interno='$llamada[0]';", $conexion);
+                $result1 = mysqli_query($conexion, "select usuario,id_centro,id_depto from emerald2.internos where interno='$llamada[0]' and mes='$fecha[1]' and anio='$fecha[0]';");
+                $inter = mysqli_fetch_row($result1);
+                $result2 = mysqli_query($conexion, "select centrocosto from emerald2.centros where id_centro='$inter[1]';");
+                $centro = mysqli_fetch_row($result2);
+                $result3 = mysqli_query($conexion, "select depto from emerald2.departamentos where id_depto='$inter[2]';");
+                $depa = mysqli_fetch_row($result3);
+                $result4 = mysqli_query($conexion, "select fecha,hora,tiempo,costo,tipo,nromarcado,localidad from emerald2.llamadas where interno='$llamada[0]';");
                 $q = fputs($fp, "Interno: $llamada[0]\nPertenece a: $inter[0]\nCentro de Costo: $centro[0]\nDepartamento: $depa[0]\n");
                 $q = fputs($fp, "Dia    Hora      Tiempo    Costo  Tipo     Nro Marcado      Localidad   \n");
                 $q = fputs($fp, "-----------------------------------------------------------------------------\n");
-                while ($line = mysql_fetch_row($result4)) {
+                while ($line = mysqli_fetch_row($result4)) {
                     $fecha = explode("-", $line[0]);
                     $linea = "$fecha[2]   $line[1]   $line[2]   $line[3]   $line[4]       $line[5]      $line[6]\n";
                     $q = fputs($fp, $linea);
                     switch ($line[4]) {
                         case "DDN":
-                            $tipocosto[0]+=$line[3];
+                            $tipocosto[0] += $line[3];
                             $tipo[0] = "DDN";
                             break;
                         case "LOCAL":
                             $tipo[1] = "LOCAL";
-                            $tipocosto[1]+=$line[3];
+                            $tipocosto[1] += $line[3];
                             break;
                         case "CELL":
                             $tipo[2] = "CELL";
-                            $tipocosto[2]+=$line[3];
+                            $tipocosto[2] += $line[3];
                             break;
                         case "DDI":
                             $tipo[3] = "DDI";
-                            $tipocosto[3]+=$line[3];
+                            $tipocosto[3] += $line[3];
                             break;
                         default:
                             $tipo[4] = "OTROS";
-                            $tipocosto[4]+=$line[3];
+                            $tipocosto[4] += $line[3];
                             break;
                     };
                 };
@@ -291,18 +297,18 @@ class Info {
                     $renglon++;
                 };
                 fclose($fp);
-                mysql_query("update emerald2.internos set tiempo='$llamada[2]',costo='$llamada[3]',cantllam='$llamada[4]' where interno='$llamada[0]' and mes='$fecha[1]' and anio='$fecha[0]';", $conexion);
-                if (mysql_error()) {
+                mysqli_query($conexion, "update emerald2.internos set tiempo='$llamada[2]',costo='$llamada[3]',cantllam='$llamada[4]' where interno='$llamada[0]' and mes='$fecha[1]' and anio='$fecha[0]';");
+                if (mysqli_error($conexion)) {
                     $error = new Errors();
-                    $error->SendMysqlErrorMessage(mysql_error(), "cinfo.php", "genera informe - update internos", $query . "\n" . $linea);
+                    $error->SendMysqlErrorMessage(mysqli_error($conexion), "cinfo.php", "genera informe - update internos", $query . "\n" . $linea);
                 }
                 //echo "generando $chivo ......";
                 //echo 'listo<br>';
             };
             // echo '<h3>Todos los informes fueron generados</h3>';
-            mysql_query("delete from emerald2.llamadas;", $conexion);
+            mysqli_query($conexion, "delete from emerald2.llamadas;");
 
-            mysql_close($conexion);
+            mysqli_close($conexion);
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
