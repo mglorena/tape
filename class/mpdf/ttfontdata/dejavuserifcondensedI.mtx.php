@@ -13,7 +13,7 @@ $desc=array (
 );
 $up=-63;
 $ut=44;
-$ttffile='/var/www/tape/class/mpdf/ttfonts/DejaVuSerifCondensed-Italic.ttf';
+$ttffile='/var/www/html/tape/class/mpdf/ttfonts/DejaVuSerifCondensed-Italic.ttf';
 $TTCfontID='0';
 $originalsize=302444;
 $sip=false;

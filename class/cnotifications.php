@@ -10,11 +10,11 @@
  *
  * @author root
  */
-require_once('/var/www/tape/class/cphpmailer.php');
-require_once ('/var/www/tape/auto/class/creservas.php');
-require_once('/var/www/tape/auto/class/cvehiculos.php');
-require_once('/var/www/tape/class/cconf.php');
-require_once('/var/www/tape/tarja/class/cpersonas.php');
+require_once('/var/www/html/tape/class/cphpmailer.php');
+require_once ('/var/www/html/tape/auto/class/creservas.php');
+require_once('/var/www/html/tape/auto/class/cvehiculos.php');
+require_once('/var/www/html/tape/class/cconf.php');
+require_once('/var/www/html/tape/tarja/class/cpersonas.php');
 
 class Notifications {
 

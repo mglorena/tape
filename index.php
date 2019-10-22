@@ -1,8 +1,8 @@
 <?php                                                                                                                                                                                                                                                 
 session_cache_expire(20);
-require("/var/www/tape/class/csajax.php");
-require("/var/www/tape/class/cwidget.php");
-require_once ('/var/www/tape/class/cerrors.php');
+require("/var/www/html/tape/class/csajax.php");
+require("/var/www/html/tape/class/cwidget.php");
+require_once ('/var/www/html/tape/class/cerrors.php');
 $sajax_request_type = "POST";
 sajax_init();
 sajax_export("WidgetResos", "SendJsError");

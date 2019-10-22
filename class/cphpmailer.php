@@ -642,7 +642,7 @@ class TapeMailer {
     function smtp_send($header, $body) {
         // Include SMTP class code, but not twice
         //include_once($this->PluginDir . "csmtp.php");
-        include_once("/var/www/tape/class/csmtp.php");
+        include_once("/var/www/html/tape/class/csmtp.php");
         $smtp = new SMTP;
 
         $smtp->do_debug = $this->SMTPDebug;

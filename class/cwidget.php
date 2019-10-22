@@ -10,7 +10,7 @@
  *
  * @author root
  */
-require_once ('/var/www/tape/tarja/class/cboletin.php');
+require_once ('/var/www/html/tape/tarja/class/cboletin.php');
 
 class Widget {
 

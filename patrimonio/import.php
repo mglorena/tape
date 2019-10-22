@@ -1,7 +1,7 @@
 <?php
-require_once '/var/www/tape/class/cdump.php';
-require_once ('/var/www/tape/class/cconf.php');
-require_once ('/var/www/tape/class/cerrors.php');
+require_once '/var/www/html/tape/class/cdump.php';
+require_once ('/var/www/html/tape/class/cconf.php');
+require_once ('/var/www/html/tape/class/cerrors.php');
 
 function Import() {
     extract($_POST, EXTR_SKIP);

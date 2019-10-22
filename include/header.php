@@ -6,7 +6,7 @@ require_once $docRoot . '/class/cusers.php';
 sajax_export("SendJsError");
 sajax_handle_client_request();*/
  $HOST_URL  = "http://". $_SERVER['HTTP_HOST'] . "/tape/";
-
+header( 'X-Frame-Options: SAMEORIGIN' );
 session_start(); // NEVER FORGET TO START THE SESSION!!! // es necesaria en todas las p�ginas para poder consultar las variables en la session.
 $inactive = 1200;
 $host = $HOST_URL;

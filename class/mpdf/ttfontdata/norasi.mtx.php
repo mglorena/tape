@@ -13,7 +13,7 @@ $desc=array (
 );
 $up=-125;
 $ut=50;
-$ttffile='/var/www/tape/class/mpdf/ttfonts/Norasi.ttf';
+$ttffile='/var/www/html/tape/class/mpdf/ttfonts/Norasi.ttf';
 $TTCfontID='0';
 $originalsize=103412;
 $sip=false;

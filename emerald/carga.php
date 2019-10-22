@@ -1,6 +1,6 @@
 <?php
-require_once '/var/www/tape/class/cdump.php';
-require_once '/var/www/tape/emerald/class/cinfo.php';
+require_once '/var/www/html/tape/class/cdump.php';
+require_once '/var/www/html/tape/emerald/class/cinfo.php';
 
 function Import() {
     extract($_POST, EXTR_SKIP);

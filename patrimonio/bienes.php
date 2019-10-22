@@ -4,7 +4,7 @@ require_once ('../class/cdump.php');
 require_once ('../class/cconf.php');
 require("../class/csajax.php");
 
-require_once ('/var/www/tape/class/cerrors.php');
+require_once ('/var/www/html/tape/class/cerrors.php');
 function SendJsError($ex, $pageName, $object) {
 
     $errorS = new Errors();

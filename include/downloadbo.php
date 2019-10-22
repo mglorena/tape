@@ -1,7 +1,7 @@
 <?php
 
-require_once ('/var/www/tape/class/cerrors.php');
-require_once ('/var/www/tape/tarja/class/cboletin.php');
+require_once ('/var/www/html/tape/class/cerrors.php');
+require_once ('/var/www/html/tape/tarja/class/cboletin.php');
 
 function DescargarNuevas($ultima, $anio, $url, $folder) {
     $archivo = $url . "R-" . strtoupper($folder) . "-" . $anio . "-" . $ultima . ".pdf";

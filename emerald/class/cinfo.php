@@ -10,8 +10,8 @@
  *
  * @author root
  */
-require_once '/var/www/tape/class/csqlprovider.php';
-require_once '/var/www/tape/class/cdump.php';
+require_once '/var/www/html/tape/class/csqlprovider.php';
+require_once '/var/www/html/tape/class/cdump.php';
 
 class Info {
 
@@ -223,7 +223,7 @@ class Info {
             $usuario = Conf::BD_USER;
             $clave = Conf::BD_PASS;
             $url = Conf::BD_SERVER;
-            $directorio = "/var/www/tape/emerald"; /* ubicaci�n del sistema dentro del servidor */
+            $directorio = "/var/www/html/tape/emerald"; /* ubicaci�n del sistema dentro del servidor */
             $datos2 = "$directorio/datos";
             $base = Conf::BD_NAME;
             $conexion = mysql_connect($url, $usuario, $clave);

@@ -20,15 +20,12 @@ class Conf {
     const TO_ALERT = 'mlgarcia@unsa.edu.ar';
     const TO_ALERT1 = 'mglorena@gmail.com'; /*** para los vehiculos****/
     
-    const BD_SERVER ='192.168.5.103';
-    const BD_USER ='tape';
+    const BD_SERVER ='localhost';
+    const BD_USER ='root';
     const BD_PASS ='oysadmin';
     const BD_NAME ='tape';
     
     const VERSION ='2.0.1';
-    //$docRoot = $_SERVER['DOCUMENT_ROOT'] . "/tape";
-    
-    //public $docRoot = $_SERVER['DOCUMENT_ROOT'] . "/tape";
     
 }
 

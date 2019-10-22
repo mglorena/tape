@@ -1,7 +1,7 @@
 
 <?php
-require("/var/www/tape/class/csajax.php");
-require_once ('/var/www/tape/class/cerrors.php');
+require("/var/www/html/tape/class/csajax.php");
+require_once ('/var/www/html/tape/class/cerrors.php');
 
 function SendJsError($ex, $pageName, $object) {
 

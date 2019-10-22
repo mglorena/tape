@@ -13,7 +13,7 @@ $desc=array (
 );
 $up=-32;
 $ut=10;
-$ttffile='/var/www/tape/class/mpdf/ttfonts/Garuda.ttf';
+$ttffile='/var/www/html/tape/class/mpdf/ttfonts/Garuda.ttf';
 $TTCfontID='0';
 $originalsize=57324;
 $sip=false;

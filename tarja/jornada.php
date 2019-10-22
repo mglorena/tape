@@ -2,7 +2,7 @@
 require('class/cpersonas.php');
 require('class/cjornada.php');
 require("../class/csajax.php");
-require_once ('/var/www/tape/class/cerrors.php');
+require_once ('/var/www/html/tape/class/cerrors.php');
 
 function SendJsError($ex, $pageName, $object) {
 

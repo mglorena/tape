@@ -10,10 +10,10 @@
  *
  * @author root
  */
-require_once('/var/www/tape/class/cphpmailer.php');
-require_once('/var/www/tape/class/cbrowserinfo.php');
-require_once('/var/www/tape/class/csmtp.php');
-require_once('/var/www/tape/class/cconf.php');
+require_once('/var/www/html/tape/class/cphpmailer.php');
+require_once('/var/www/html/tape/class/cbrowserinfo.php');
+require_once('/var/www/html/tape/class/csmtp.php');
+require_once('/var/www/html/tape/class/cconf.php');
 
 class Errors {
 
@@ -55,7 +55,7 @@ class Errors {
     function SendMysqlErrorMessage($ex, $pageName, $method, $object) {
         if (!isset($ex))
             $ex = 'Error mensaje - testing';
-        $name = "/var/www/tape/error1.sql";
+        $name = "/var/www/html/tape/error1.sql";
         $ar = fopen($name,"a");
         fputs($ar,"prueba de escribir error");
         fclose($ar);

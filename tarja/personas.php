@@ -1,6 +1,6 @@
 <?php  
 require_once ('class/cpersonas.php');
-require_once ('/var/www/tape/class/cerrors.php');
+require_once ('/var/www/html/tape/class/cerrors.php');
 require("../class/csajax.php");
 $sajax_request_type = "POST";
 sajax_init();

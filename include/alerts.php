@@ -1,7 +1,7 @@
 <?php
 
 
-require_once ('/var/www/tape/class/cnotifications.php');
+require_once ('/var/www/html/tape/class/cnotifications.php');
 $n = new Notifications();
 /********* RESERVAS************/
 /*$table = $n->GetReservas();

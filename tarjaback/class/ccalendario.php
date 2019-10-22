@@ -1,6 +1,6 @@
 <?php
 
-require_once ('/var/www/tape/class/cerrors.php');
+require_once ('/var/www/html/tape/class/cerrors.php');
 require_once ('cpersonas.php');
 require_once ('carticulos.php');
 date_default_timezone_set('America/Argentina/Salta');

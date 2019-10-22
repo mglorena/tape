@@ -1,7 +1,7 @@
 <?php
 
-require_once('/var/www/tape/class/cphpmailer.php');
-require_once('/var/www/tape/class/cconf.php');
+require_once('/var/www/html/tape/class/cphpmailer.php');
+require_once('/var/www/html/tape/class/cconf.php');
 
 function SendMailBacks() {
 
@@ -16,7 +16,7 @@ function SendMailBacks() {
     $mailer->Body = "Backups";
     $mailer->IsHTML(true);
     $mailer->AddAddress('mlgarcia@unsa.edu.ar', 'Backup Bases de Datos y etcs');
-    $mailer->AddAttachment('/var/www/tape/bd/backupOYS.tgz');
+    $mailer->AddAttachment('/var/www/html/tape/bd/backupOYS.tgz');
     $mailer->Host = "unsa.edu.ar";
     $mailer->Port = "25";
     $mailer->Username = "mlgarcia";

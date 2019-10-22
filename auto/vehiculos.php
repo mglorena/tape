@@ -9,7 +9,7 @@ $sajax_request_type = "POST";
 sajax_init();
 sajax_export("SaveVehiculo", "LoadVehiculos", "DeleteVehiculo", "UpdateKm", "SendJsError");
 sajax_handle_client_request();
-require_once ('/var/www/tape/class/cerrors.php');
+require_once ('/var/www/html/tape/class/cerrors.php');
 function SendJsError($ex, $pageName, $object) {
 
     $errorS = new Errors();

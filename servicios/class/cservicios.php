@@ -73,7 +73,7 @@ class Servicio {
             $db->setQuery($query);
 
             if (is_null($db->execute())) {
-//            $n ="/var/www/tape/servicios/class/servocops.txt";
+//            $n ="/var/www/html/tape/servicios/class/servocops.txt";
 //            $ar =fopen($n,"a");
 //            fputs($ar,"hubo errhor\n". $query);
 //            fclose($ar);
@@ -177,7 +177,7 @@ class Servicio {
 
         try {
 
-$n ="/var/www/tape/servicios/class/servocops.txt";
+$n ="/var/www/html/tape/servicios/class/servocops.txt";
                     $ar =fopen($n,"a");
             foreach ($servicio as $s) {
                 if (is_null($s->Medicion) || $s->Medicion === "") {

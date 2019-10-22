@@ -6,9 +6,9 @@ function Main() {
         $contraseña = "tapeoys";
         $db = new PDO('mysql:host=localhost;dbname=tape', $usuario, $contraseña);
         CreateDB($db);
-        ImportTables($db, "/var/www/tape/bd/structure/tables/");
-        ImportDatos($db, "/var/www/tape/bd/datos/");
-        ImportStoreds($db, "/var/www/tape/bd/storeds/");
+        ImportTables($db, "/var/www/html/tape/bd/structure/tables/");
+        ImportDatos($db, "/var/www/html/tape/bd/datos/");
+        ImportStoreds($db, "/var/www/html/tape/bd/storeds/");
         Releases($db);
     } catch (PDOException $e) {
         echo 'Connection failed: ' . $e->getMessage();
@@ -102,7 +102,7 @@ function ImportDatos($db, $dir) {
 
 function Releases($db) {
     echo "<div style='border:solid 1px #ACACAC;background-color:#CCC;margin: 10px 0 10px 0'>RELEASES</div>";
-    $dh = opendir("/var/www/tape/bd/release/");
+    $dh = opendir("/var/www/html/tape/bd/release/");
     while (false !== ($filename = readdir($dh))) {
         $files[] = $filename;
     }
@@ -112,7 +112,7 @@ function Releases($db) {
 
         if ($files[$i] != "." && $files[$i] != "..") {
             echo "folder:" . $files[$i] . "------------------------------------------------------ <br/>";
-            $dir = opendir("/var/www/tape/bd/release/" . $files[$i]);
+            $dir = opendir("/var/www/html/tape/bd/release/" . $files[$i]);
             $f=[];
             while (false !== ($filename = readdir($dir))) {
                 $f[] = $filename;
@@ -123,17 +123,17 @@ function Releases($db) {
 
                 if ($f[$j] != "." && $f[$j] != "..") {
                     //echo "file :" . $f[$j] . "<br/>";
-                    $s = file_get_contents("/var/www/tape/bd/release/" . $files[$i] . "/" . $f[$j]);
-                    //echo "/var/www/tape/bd/release/".$files[$i]."/". $f[$j]. "<br/>";
+                    $s = file_get_contents("/var/www/html/tape/bd/release/" . $files[$i] . "/" . $f[$j]);
+                    //echo "/var/www/html/tape/bd/release/".$files[$i]."/". $f[$j]. "<br/>";
                     $q = $db->exec($s);
                    // echo "do_dump qeeee" . $q . "<br/>";
 
                     if ($db->errorInfo()[2] != "") {
-                        echo "error en sql " . "/var/www/tape/bd/release/" . $files[$i] . "/" . $f[$j] . "<br/>";
+                        echo "error en sql " . "/var/www/html/tape/bd/release/" . $files[$i] . "/" . $f[$j] . "<br/>";
                         print_r($db->errorInfo());
                     } else {
                        // if ($q === 1) {
-                            echo "Datos de release '" . "/var/www/tape/bd/release/" . $files[$i] . "/" . $f[$j] . "' existosamente importados<br/>";
+                            echo "Datos de release '" . "/var/www/html/tape/bd/release/" . $files[$i] . "/" . $f[$j] . "' existosamente importados<br/>";
                         //}// break;
                     }
                 }

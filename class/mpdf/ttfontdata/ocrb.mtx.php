@@ -13,7 +13,7 @@ $desc=array (
 );
 $up=-100;
 $ut=50;
-$ttffile='/var/www/tape/class/mpdf/ttfonts/ocrb10.ttf';
+$ttffile='/var/www/html/tape/class/mpdf/ttfonts/ocrb10.ttf';
 $TTCfontID='0';
 $originalsize=23112;
 $sip=false;

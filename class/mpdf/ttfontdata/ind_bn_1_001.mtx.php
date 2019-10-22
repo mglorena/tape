@@ -13,7 +13,7 @@ $desc=array (
 );
 $up=-215;
 $ut=39;
-$ttffile='/var/www/tape/class/mpdf/ttfonts/ind_bn_1_001.ttf';
+$ttffile='/var/www/html/tape/class/mpdf/ttfonts/ind_bn_1_001.ttf';
 $TTCfontID='0';
 $originalsize=235632;
 $sip=false;

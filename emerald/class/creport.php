@@ -10,7 +10,7 @@
  *
  * @author root
  */
-require_once '/var/www/tape/class/csqlprovider.php';
+require_once '/var/www/html/tape/class/csqlprovider.php';
 /*require_once '../class/cpgsqlprovider.php';*/
 class Report {
     //put your code here

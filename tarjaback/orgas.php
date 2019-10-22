@@ -1,9 +1,9 @@
 
 <?php
 require('class/corgas.php');
-require("/var/www/tape/class/csajax.php");
-require("/var/www/tape/auto/class/cdependencias.php");
-require_once ('/var/www/tape/class/cerrors.php');
+require("/var/www/html/tape/class/csajax.php");
+require("/var/www/html/tape/auto/class/cdependencias.php");
+require_once ('/var/www/html/tape/class/cerrors.php');
 
 function SendJsError($ex, $pageName, $object) {
 

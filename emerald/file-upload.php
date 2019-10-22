@@ -1,6 +1,6 @@
 <?php
 
-require_once '/var/www/tape/emerald/class/cinfo.php';
+require_once '/var/www/html/tape/emerald/class/cinfo.php';
 sleep(1);
 $reserva = $_POST['reservaId'];
 

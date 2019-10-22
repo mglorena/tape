@@ -1,8 +1,8 @@
 <?php
 
-require_once ('/var/www/tape/class/cerrors.php');
-require_once ('/var/www/tape/class/csqlprovider.php');
-require_once ('/var/www/tape/class/cdump.php');
+require_once ('/var/www/html/tape/class/cerrors.php');
+require_once ('/var/www/html/tape/class/csqlprovider.php');
+require_once ('/var/www/html/tape/class/cdump.php');
 
 class Profile {
    var $ProfileId = 'NULL',

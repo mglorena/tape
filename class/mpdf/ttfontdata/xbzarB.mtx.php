@@ -13,7 +13,7 @@ $desc=array (
 );
 $up=-278;
 $ut=29;
-$ttffile='/var/www/tape/class/mpdf/ttfonts/XB Zar Bd.ttf';
+$ttffile='/var/www/html/tape/class/mpdf/ttfonts/XB Zar Bd.ttf';
 $TTCfontID='0';
 $originalsize=1389628;
 $sip=false;
