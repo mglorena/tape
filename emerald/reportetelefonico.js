@@ -481,9 +481,9 @@ function ImprimirDetalle_callback(response) {
 function ResumeHeader()
 {
     var ABONO_SINDDE = 9.6;
-    var ABONO_COMUN = 12.6;
-    var ABONO_PINFIC = 1.5;
-    var ABONO_VOZDATOS = 32;
+    var ABONO_COMUN = 148.00;
+    var ABONO_PINFIC = 148.00;
+    var ABONO_VOZDATOS = 148;
     var ABONO_JEFESEC = 22;
     var colshide = '';
     var title = "<div align='left'><b><u>TELEFONIA </u></b></div>";
@@ -527,13 +527,14 @@ function ResumeHeader()
         header += "<div class='efact'>Recargo 2º Venc.: 1,6 %</div>";
         header += "<div style='clear:both;'></div>";
         header += "<div class='efact'>Cargo p/Conex.: $ 151,30</div>";
-        header += "<div class='efact'>Abono comun s/DDE: $ 9,60</div>";
-        header += "<div class='efact'>Abono comun: $ 12,60</div>";
-        header += "<div class='efact'>Abono Jefe-Sec: $ 22,00</div>";
-        header += "<div style='clear:both;'></div>";
-        header += "<div class='efact'>Cargo p/Conex. s/DDE: $ 90,40</div>";
-        header += "<div class='efact'>Abono voz y datos: $ 32,00</div>";
-        header += "<div class='efact'>Abono PIN-Fic: $ 1,5</div>";
+        /*header += "<div class='efact'>Abono comun s/DDE: $ 9,60</div>";*/
+        header += "<div class='efact'>Abono comun: $ 26,00</div>";
+        /*header += "<div class='efact'>Abono Jefe-Sec: $ 22,00</div>";*/
+        
+        /*header += "<div class='efact'>Cargo p/Conex. s/DDE: $ 90,40</div>";*/
+        /*header += "<div class='efact'>Abono voz y datos: $ 32,00</div>";*/
+        header += "<div class='efact'>Abono PIN-Fic: $ 15.00</div>";
+header += "<div style='clear:both;'></div>";
         header += "<div class='efact'>&nbsp;</div>";
          header += "<div style='clear:both;' class='efact'></div>";
     }

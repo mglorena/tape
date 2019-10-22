@@ -58,11 +58,22 @@ function GridPanel(store)
                 dataIndex: 'Usuario',
                 flex: 1
             },
+{ 
+header: 'Paga',
+dataIndex: 'Paga',
+flex: 1
+},
             {
                 header: 'Medidor',
                 dataIndex: 'Medidor',
                 flex: 1
             },
+{
+header: 'Medicion Anterior',
+dataIndex: 'MedicionA',
+flex: 1
+},
+
             {
                 xtype: 'numbercolumn',
                 format: '0',
@@ -74,6 +85,7 @@ function GridPanel(store)
                     allowBlank: false
                 }
             }
+
         ],
         selModel: {
             selType: 'cellmodel'
@@ -176,7 +188,7 @@ function LoadServicios_callback(response)
         var win;
         Ext.define('Servicio', {
             extend: 'Ext.data.Model',
-            fields: ['ServicioId', {name: 'Usuario', type: 'string'}, 'Medidor', 'Medicion', 'Mes', 'Anio']});
+            fields: ['ServicioId', {name: 'Usuario', type: 'string'}, 'Medidor', 'Medicion', 'Mes', 'Anio','Paga','MedicionA']});
 
 
         // create the Data Store
@@ -279,8 +291,6 @@ function SaveServicio(grid)
 }
 function SaveServicio_callback(response)
 {
-    console.log("holaaaaaaaaaaaaaaaaaaaaaaa");
-    console.log(response);
     if (response)
     {
         humane.success("Se ha guardado las mediciones correctamente.");

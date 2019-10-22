@@ -1,9 +1,8 @@
 /* 
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
- * *testing
  */
-  
+
 
 Ext.define('DataObject', {
     extend: 'Ext.data.Model',

@@ -4,23 +4,10 @@ require_once ('/var/www/tape/class/cerrors.php');
 require_once ('/var/www/tape/tarja/class/cboletin.php');
 
 function DescargarNuevas($ultima, $anio, $url, $folder) {
-    
-   /* $archivo = $url . "R-" . strtoupper($folder) . "-" . $anio . "-" . $ultima . ".pdf";
-    $file = fopen($archivo, "rb");
-    $i=0;
-    while ($file)
-    {
-        
-    }*/
-    
-    
     $archivo = $url . "R-" . strtoupper($folder) . "-" . $anio . "-" . $ultima . ".pdf";
     $file = fopen($archivo, "rb");
     $last = $ultima;
-   // echo "archivo :" . $archivo."<br/>";
-   //  echo "que pasa2:".$file."<br/>";
     while ($file) {
-      //  echo "ksksksk"."<br/>";
         if (!@copy($archivo, '/backup/boletin/' . $folder . '/' . $anio . '/R-' . strtoupper($folder) . '-' . $anio . '-' . $ultima . '.pdf')) {
             $errors = error_get_last();
             echo "COPY ERROR: " . $errors['type'];
@@ -30,13 +17,9 @@ function DescargarNuevas($ultima, $anio, $url, $folder) {
         }
         $ultima = sprintf("%04d", $ultima + 1);
         $archivo = $url . "R-" . strtoupper($folder) . "-" . $anio . "-" . $ultima . ".pdf";
-       // echo "archivo2:".$archivo ."<br/>";
         $file = fopen($archivo, "rb");
        
         if (!$file) {
-            // echo "ksksksk2"."<br/>";
-           /* $e = new Errors();
-            $e->SendErrorMessage(new Exception("Resolucion faltante"), "Error descargando pdf", $ultima);*/
             $last = $ultima;
             $ultima  = $ultima + 1;
             for ($i = 1; $i < 5; $i++) {
@@ -44,7 +27,6 @@ function DescargarNuevas($ultima, $anio, $url, $folder) {
                 $ver = sprintf("%04d", $ver);
                 $archivo = $url . "R-" . strtoupper($folder) . "-" . $anio . "-" . $ver . ".pdf";
                 $file = fopen($archivo, "rb");
-               // echo "archivo3:".$archivo."<br/>";
                 if ($file) {
                     $e = new Errors();
                     $e->SendErrorMessage(new Exception("Resolucion faltante"), "Error descargando pdf", $ultima - 1);

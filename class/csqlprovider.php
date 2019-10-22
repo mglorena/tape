@@ -23,7 +23,6 @@ class sqlprovider {
     function execute() {
         $error = new Errors();
         try {
-            echo "test";
 
             $this->conexion = mysqli_connect(Conf::BD_SERVER, Conf::BD_USER, Conf::BD_PASS);
 
@@ -45,46 +44,11 @@ class sqlprovider {
         return null;
     }
 
-//    function execute() {
-//        try {
-//            echo "antes:222";
-//            //$this->conexion = mysql_connect(Conf::BD_SERVER, Conf::BD_USER, Conf::BD_PASS);
-//            //$this->conexion = mysqli_connect(Conf::BD_SERVER, Conf::BD_USER, Conf::BD_PASS, Conf::BD_NAME);
-//           $link = mysqli_connect("localhost", "root", "oysadmin", "tape");
-//           echo "3333";
-//            if (!$link) {
-//                //echo "Error: Unable to connect to MySQL." . PHP_EOL;
-//                echo " error";
-//                //echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
-//                //
-//                //echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
-//                exit;
-//            }
-//echo "si";
-//            /* echo "conexion:". $this->conexion;
-//              mysql_select_db(Conf::BD_NAME, $this->conexion);
-//              $this->queries = 0;
-//              $this->resource = null;
-//              // mysql_query("SET NAMES 'utf8'", $this->conexion);
-//              if (!($this->resource = mysql_query($this->sql, $this->conexion))) {
-//              $error = new Errors();
-//              $error->SendMysqlErrorMessage(mysql_error(), "csqlprovider.php", "execute", $this->sql);
-//              return null;
-//              }
-//              $this->queries++;
-//              return $this->resource; */
-//        } catch (Exception $ex) {
-//            $error = new Errors();
-//            $error->SendMysqlErrorMessage(mysql_error(), "csqlprovider.php", "execute", $this->sql);
-//        }
-//        return null;
-//    }
-
     function update() {
         // echo $this->sql;
-        if (!($this->resource = mysql_query($this->sql, $this->conexion))) {
+        if (!($this->resource = mysqli_query($this->conexion, $this->sql))) {
             $error = new Errors();
-            $error->SendMysqlErrorMessage(mysql_error(), "csqlprovider.php", "update", $this->sql);
+            $error->SendMysqlErrorMessage(mysqli_error($this->conexion), "csqlprovider.php", "update", $this->sql);
             return false;
         }
         return true;
@@ -95,7 +59,7 @@ class sqlprovider {
     }
 
     function ListArray() {
-       if (!($cur = $this->execute())) {
+        if (!($cur = $this->execute())) {
 
             return null;
         }
@@ -107,7 +71,8 @@ class sqlprovider {
     }
 
     function ListObject() {
-      if (!($cur = $this->execute())) {
+
+        if (!($cur = $this->execute())) {
 
             return null;
         }
@@ -141,12 +106,12 @@ class sqlprovider {
     }
 
     function freeResults() {
-          @mysqli_free_result($this->resource);
+        @mysqli_free_result($this->resource);
         return true;
     }
 
     function getObject() {
-          if ($cur = $this->execute()) {
+        if ($cur = $this->execute()) {
             if ($object = mysqli_fetch_object($cur)) {
                 @mysqli_free_result($cur);
                 return $object;

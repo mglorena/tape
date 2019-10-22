@@ -21,8 +21,8 @@ class Persona {
             $Apellido = '', $Domicilio = '', $ArticuloId = '', $Observaciones = '', $FechaIngreso = 'NULL',
             $CargoDesc = '', $Categoria = '', $CantHoras = '', $Desde = 'NULL', $Hasta = 'NULL', $DNI = 'NULL',
             $Compensatorio = 'NULL', $CP = 'NULL', $LicAnt = 'NULL', $LicA = 'NULL', $Total = 'NULL', $Telefono = 'NULL',
-            $Compensatorios = 'NULL', $FechaNac = '', $Email = '',
-            $Legajo = 'NULL', $Activo = 'NULL', $CUIL = '',
+            $Compensatorios = 'NULL', $FechaNac = 'NULL',$Email ='',
+            $Legajo = 'NULL',$Activo='NULL',$CUIL='',
             $Active = 'NULL';
 
     public function copy($object) {
@@ -57,12 +57,12 @@ class Persona {
 
 
             $db = new sqlprovider();
-            $db->getInstance();
+           $db->getInstance();
             $db->setQuery($query);
             if ($db->execute() == "1") {
                 $e = new Errors();
-                $e->SendErrorMessage(new Exception("no inserta "), "cpersonas.php - AddNew", $query);
-
+            $e->SendErrorMessage(new Exception("no inserta "), "cpersonas.php - AddNew", $query);
+           
                 $db->CloseMysql();
                 return true;
             } else {
@@ -154,7 +154,7 @@ class Persona {
         $query = "";
         try {
 
-            $query .= "call personas_delCompe('" . $this->PersonaId . "', " . $cId . ");
+            $query .="call personas_delCompe('" . $this->PersonaId . "', " . $cId . ");
                     ";
             $db = new sqlprovider();
             $db->getInstance();
@@ -176,9 +176,10 @@ class Persona {
         return false;
     }
 
-    function GetAllPersons() {
-
-        $personas = array();
+    function GetAllPersons()
+    {
+        
+         $personas = array();
         $query = "";
         try {
             $db = new sqlprovider();
@@ -196,20 +197,15 @@ class Persona {
         }
         return null;
     }
-
     function Guardar() {
         $query = "";
         try {
-            if (!$this->FechaNac) {
-                $this->FechaNac = 'null';
-            } else {
-                $this->FechaNac = "'" . $this->FechaNac . "'";
-            }
-            $query = "call personas_update(" . $this->PersonaId . ", '" . $this->Apellido . "', '" . $this->Nombre . "', '" . $this->Legajo . "', '" . $this->CargoDesc . "', " . $this->Categoria . ", '" . $this->Domicilio . "', '" . $this->Telefono . "', " . $this->FechaNac . ", '" . $this->DNI . "', " . $this->Activo . " , '" . $this->FechaIngreso . "');
-                    ";
-            $e = new Errors();
-            $e->SendErrorMessage(new Exception("debug-datos"), "cpersonas.php - Guardar", $query);
-            $db = new sqlprovider();
+
+            $query = "call personas_update(" . $this->PersonaId . ", '" . $this->Apellido . "', '" . $this->Nombre . "', '" . $this->Legajo . "', '" . $this->CargoDesc . "', " . $this->Categoria . ", '" . $this->Domicilio . "', '" . $this->Telefono . "', '" . $this->FechaNac . "', '" . $this->DNI . "', " . $this->Activo . " , '" . $this->FechaIngreso . "');
+                    ";/*
+ $e = new Errors();
+            $e->SendErrorMessage(new Exception("no inserta fecha de ingreso"), "cpersonas.php - Guardar", $query);
+           */ $db = new sqlprovider();
             $db->getInstance();
             $db->setQuery($query);
             if ($db->execute() == "1") {
@@ -534,7 +530,7 @@ class Persona {
 
         $query = "";
         try {
-            $query .= "call personas_delete(" . $this->PersonaId . ");
+            $query .="call personas_delete(" . $this->PersonaId . ");
                     ";
             $db = new sqlprovider();
             $db->getInstance();

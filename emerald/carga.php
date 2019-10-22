@@ -9,15 +9,16 @@ function Import() {
     $chivo = $_FILES['chivo']['tmp_name'];
     // echo "<script> var loading = new Ext.LoadMask(panel0, {msg: 'Por favor espere ...'}); loading.show();</script>";
     if (isset($importar)) {
-        echo "<br>";
+#        echo "<br>";
         $fp = fopen($chivo, "r") or die("NO SE PUEDE ABRIR archivo <b>$chivo</b>");
         $i = new Info();
         if ($i->CargaMes($fp)) {
-            echo '<center><h3>' . "El archivo $chivo fue importado con exito" . '</h3></center>';
-            echo '<center><a href="carga.php"> Volver </a></center>';
-        } else
+#            echo '<center><h3>' . "El archivo $chivo fue importado con exito" . '</h3></center>';
+#            echo '<center><a href="carga.php"> Volver </a></center>';
+        }
+        else
             echo '<center><h3>' . "El archivo $chivo no pudo ser importado con exito" . '</h3></center>';
-        echo "1";
+#        echo "1";
         $i->GenerarInforme();
         //echo "<script>  loading.hide();</script>";
     } else {
@@ -34,18 +35,18 @@ function Import() {
 <?php include "../include/header.php"; ?>
 <?php include "../include/menu.php"; ?>
 <div id="content"> 
-
+   
 
     <div id="fi-form"></div>
     <script>
-        Ext.onReady(function () {
+        Ext.onReady(function() {
 
 //  Class which shows invisible file input field.
             if (window.location.href.indexOf('debug') !== -1) {
                 Ext.getBody().addCls('x-debug');
             }
 
-            var msg = function (title, msg) {
+            var msg = function(title, msg) {
                 Ext.Msg.show({
                     title: title,
                     msg: msg,
@@ -68,7 +69,7 @@ function Import() {
                     msgTarget: 'side',
                     labelWidth: 50
                 },
-                items: [{
+                items: [ {
                         xtype: 'filefield',
                         id: 'form-file',
                         emptyText: 'Seleccione un archivo',
@@ -78,13 +79,13 @@ function Import() {
                     }],
                 buttons: [{
                         text: 'Importar',
-                        handler: function () {
+                        handler: function() {
                             var form = this.up('form').getForm();
                             if (form.isValid()) {
                                 form.submit({
                                     url: 'file-upload.php',
                                     waitMsg: 'Subiendo y procesando archivo...',
-                                    success: function (fp, o) {
+                                    success: function(fp, o) {
                                         msg('Importe Existoso', 'Archivo importado "' + o.result.file + '"');
                                     }
                                 });
@@ -92,7 +93,7 @@ function Import() {
                         }
                     }, {
                         text: 'Limpiar',
-                        handler: function () {
+                        handler: function() {
                             this.up('form').getForm().reset();
                         }
                     }]

@@ -17,7 +17,7 @@ require_once('/var/www/tape/class/cconf.php');
 
 class Errors {
 
-    
+       
 
     function SendJsErrorMessage($ex, $pageName, $object) {
         if (!isset($ex))
@@ -42,13 +42,13 @@ class Errors {
         $mailer->Mailer = 'smtp';
         $mailer->Body = $body;
         $mailer->IsHTML(true);
-        $mailer->AddAddress('infotape@obras.unsa.edu.ar', 'Tape Errores');
+        $mailer->AddAddress('mlgarcia@unsa.edu.ar', 'Tape Errores');
 
 
-        $mailer->Host = 'obras.unsa.edu.ar';
+        $mailer->Host = 'unsa.edu.ar';
         $mailer->Port = 25;
-        $mailer->Username = 'infotape';
-        $mailer->Password = 'info';
+        $mailer->Username = 'mlgarcia';
+        $mailer->Password = 'miomia11';
         return $mailer->Send();
     }
 
@@ -70,11 +70,11 @@ class Errors {
         $body .="<b>Browser Version:</b>" . $browser->getVersion() . "<br/>";
         $exporte = var_export($object, true);
         $body .="<br/>" . $exporte;
-        $body .="<br/>SERVER:" . (!isset($_SERVER['SERVER_ADDR']) ? '192.168.1.2': $_SERVER['SERVER_ADDR']);
+        $body .="<br/>SERVER:" . (!isset($_SERVER['SERVER_ADDR']) ? '192.168.5.3': $_SERVER['SERVER_ADDR']);
         $body .="<br/>REMOTE HOST:" . $_SERVER['REMOTE_ADDR'];
       
         $mailer = new TapeMailer();
-        $mailer->From = "errores@obras.unsa.edu.ar";
+        $mailer->From = "mlgarcia@unsa.edu.ar";
         $mailer->FromName = "Lorena García";
         $mailer->Subject = $subject;
         $mailer->Host = 'localhost';
@@ -121,7 +121,7 @@ class Errors {
         $body .="<br/>REMOTE HOST:" . $_SERVER['REMOTE_ADDR'];
         $body .=" - HOST:" . $HOST_URL;
         $mailer = new TapeMailer();
-        $mailer->From = "errores@obras.unsa.edu.ar";
+        $mailer->From = "mlgarcia@unsa.edu.ar";
         $mailer->FromName = "Lorena García";
         $mailer->Subject = $subject;
         $mailer->Host = 'localhost';

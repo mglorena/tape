@@ -10,7 +10,6 @@ else {
 }
 
 function Login() {
-   
     if (isset($_POST["btnInvitado"])) {
         $loginUser = new User();
         $loginUser->UserName = 'invitado';
@@ -26,7 +25,6 @@ function Login() {
         }
     }
     if (trim($_POST["txtUsername"]) != "" && trim($_POST["txtPassword"]) != "") {
-     
         $loginUser = new User();
         $loginUser->UserName = trim($_POST["txtUsername"]);
         $loginUser->Password = trim($_POST["txtPassword"]);
@@ -35,7 +33,7 @@ function Login() {
         if ($msg == "Ok") {
             $username = trim($_POST["txtUsername"]);
             $_SESSION['S_username'] = $username;
- 
+
             $rules = $loginUser->GetRulesByUser($username);
             $_SESSION['S_rules'] = $rules[0][0];
             echo "<script>window.location = 'index.php'</script>";

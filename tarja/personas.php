@@ -1,4 +1,4 @@
-<?php
+<?php  
 require_once ('class/cpersonas.php');
 require_once ('/var/www/tape/class/cerrors.php');
 require("../class/csajax.php");
@@ -41,9 +41,7 @@ function GuardarPersona($p) {
 
         $pe = new Persona();
         $pe->copy($persona);
-        $pe->Activo = ($pe->Activo === "on" ? "1" : "0");
-        $e = new Errors();
-        $e->SendErrorMessage(new Exception("debug-datos2"), "cpersonas.php - Guardar", $pe->FechaNac);
+        $pe->Activo = ($pe->Activo == "on" ? "1" : "0");
         return $pe->Guardar();
     } catch (ErrorException $ex) {
         $e = new Errors();

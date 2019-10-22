@@ -130,8 +130,8 @@ class User {
             $db = new sqlprovider();
             $db->getInstance();
             $query = "call users_getByUserName('" . $this->UserName . "');";
+
             if ($db->setQuery($query)) {
-               
                 $usuarios = $db->ListObject();
             }
 

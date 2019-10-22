@@ -7,7 +7,7 @@ function SendMailBacks() {
 
 
     $mailer = new TapeMailer();
-    $mailer->From = "infotape@obras.unsa.edu.ar";
+    $mailer->From = "mlgarcia@unsa.edu.ar";
     $mailer->FromName = "Lorena García";
 
     $mailer->Subject = "Backups de bases de datos y etc de servidor";
@@ -15,7 +15,7 @@ function SendMailBacks() {
     $mailer->Mailer = 'smtp';
     $mailer->Body = "Backups";
     $mailer->IsHTML(true);
-    $mailer->AddAddress('mglorena@gmail.com', 'Tape Errores');
+    $mailer->AddAddress('mlgarcia@unsa.edu.ar', 'Backup Bases de Datos y etcs');
     $mailer->AddAttachment('/var/www/tape/bd/backupOYS.tgz');
     $mailer->Host = "unsa.edu.ar";
     $mailer->Port = "25";

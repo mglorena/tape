@@ -1,4 +1,4 @@
-var CurrentObject, hasUpdate, hasInsert;
+var CurrentObject,hasUpdate,hasInsert;
 function Mascaras()
 {
     jQuery(function ($) {
@@ -11,7 +11,7 @@ function FormField(record)
 {
     try { // coment
         var tdni = [['DNI', 'DNI'], ['LC', 'LC'], ['LE', 'LE']];
-//        console.log(record.data);
+        // console.log(record.data);
         var required = '<span style="color:red;font-weight:bold" data-qtip="Requerido">*</span>';
         var formFields = [
             {
@@ -41,7 +41,7 @@ function FormField(record)
             {
                 fieldLabel: 'Fecha Nac.',
                 name: 'FechaNac',
-                value: (record ? record.data['FechaNac'] : '01/01/1999'),
+                value: (record ? record.data['FechaNac'] : null),
                 // afterLabelTextTpl: required,
                 // allowBlank: false,
                 width: 190,
@@ -129,21 +129,13 @@ function FormField(record)
                 allowBlank: false
             },
             {
-                xtype: 'checkbox',
+                xtype: 'checkboxfield',
                 name: 'Activo',
+                id: 'Activo',
                 fieldLabel: 'Activo',
                 boxLabel: 'Esta activo?',
                 afterLabelTextTpl: required,
-                checked: (record ? (record.data['Activo'] === 'off' || record.data['Activo'] === 0 ? false : true) : null),
-                listeners: {
-                    change: function (field, newValue, oldValue, eOpts) {
-                        //console.log('change:' + field.fieldLabel + ' ' + newValue);
-                        if(!newValue)CurrentObject.data['Activo'] =0;
-                        else CurrentObject.data['Activo'] = 1;
-                                
-                        //CurrentObject.data['Activo'] = newValue;
-                    }
-                }
+                checked: (record ? (record.data['Activo'] == 'off' ? false : true) : null)
             }/*,
              {
              fieldLabel: 'Email',
@@ -155,7 +147,8 @@ function FormField(record)
              }*/
         ];
         return formFields;
-    } catch (e)
+    }
+    catch (e)
     {
         SendJsError(e, "FormField - addperso.js", record);
     }
@@ -167,38 +160,38 @@ function GuardarPersona(form, action)
     {
         var rec = form.getValues();
         var personas;
+
         if (action !== "add") {
             if (!hasUpdate) {
                 return;
             }
             rec['PersonaId'] = CurrentObject.data['PersonaId'];
-            rec['Activo']=CurrentObject.data['Activo'];
-            //alert(rec['FechaNac']);
-            if(rec['FechaNac'] ==='') rec['FechaNac'] = null;
-//            console.log(rec);
             personas = JSON.stringify(rec);
-            //console.log("antes");
-//            console.log(personas);
             x_GuardarPersona(personas, GuardarPersona_callback);
-        } else
+        }
+        else
         {
             personas = JSON.stringify(rec);
             x_AgregarPersona(personas, AgregarPersona_callback);
         }
 
 
-    } catch (e)
+    }
+    catch (e)
     {
         SendJsError(e, "GuardarPersona - addperso.js", action);
     }
 }
 function AgregarPersona_callback(response)
 {
+ 
+
     if (response)
     {
         humane.success("Se ha agregado la persona correctamente.");
         x_LoadPersonas(LoadPersonas_callback);
-    } else
+    }
+    else
     {
         humane.error("Hubo un error al agregar los datos.");
         SendJsError(new Error("Error AgregarPersona_callback - personas.js"), "personas.js", response);
@@ -208,12 +201,13 @@ function AgregarPersona_callback(response)
 
 function GuardarPersona_callback(response)
 {
-
+   
     if (response)
     {
         humane.success("Se ha guardado la persona correctamente.");
         x_LoadPersonas(LoadPersonas_callback);
-    } else
+    }
+    else
     {
         humane.error("Hubo un error al guardar los datos.");
         SendJsError(new Error("Error GuardarPersona - addperso.js"), "addperso.js", response);
@@ -227,15 +221,11 @@ function PopinPersona(action, record, rIdx, grid)
     {
         var formFields = FormField(record);
         CurrentObject = record;
-        var title, nameBoton;
+        var title;
         if (action === "add")
-        {
             title = "Agregar Persona";
-            nameBoton = "Guardar";
-        } else {
+        else
             title = "Editar Persona";
-            nameBoton = "Actualizar";
-        }
         var win = Ext.create("Ext.window.Window", {
             title: title,
             bodyStyle: "padding: 5px",
@@ -250,12 +240,10 @@ function PopinPersona(action, record, rIdx, grid)
                 items: formFields,
                 buttons: [
                     {
-                        text: nameBoton,
+                        text: "Agregar",
                         id: "new-record-add-button",
                         handler: function () {
                             var form = this.up("form").getForm();
-//                            console.log(form);
-
                             if (form.isValid())
                             {
                                 GuardarPersona(form, action);
@@ -287,9 +275,9 @@ function PopinPersona(action, record, rIdx, grid)
                 }
             }
         });
-
         return win;
-    } catch (e)
+    }
+    catch (e)
     {
         SendJsError(e, "PopinPersona - personas.js", action);
     }
@@ -457,14 +445,15 @@ function GridPanel(store)
             ], viewConfig: {
                 getRowClass: function (record, index) {
                     var active = record.get('Activo');
-                    //    console.log(active);
+                //    console.log(active);
                     return (active === 'off' ? 'inactive' : '');
 
                 }
             }
         });
         return grid;
-    } catch (e)
+    }
+    catch (e)
     {
         SendJsError(e, "GridPanel - personas.js", "load grid");
     }
@@ -481,7 +470,7 @@ function LoadPersonas_callback(response)
         $("#tblPersonas").html("");
         var data = ObjToArray(response[1]);
         //  console.log("daaaaa");
-//          console.log(data);
+        //  console.log(data);
         Ext.onReady(function () {
             Ext.define('Personas', {
                 extend: 'Ext.data.Model',
@@ -505,7 +494,8 @@ function LoadPersonas_callback(response)
             });
             var grid = GridPanel(store);
         });
-    } catch (e)
+    }
+    catch (e)
     {
         SendJsError(e, "LoadPersonas_callback - personas.js", response);
     }
@@ -520,7 +510,8 @@ function DeletePersona_callback(response)
     {
         humane.success("Se ha eliminado la persona correctamente.");
         x_LoadChoferes(hasUpdate, hasInsert, LoadChoferes_callback);
-    } else
+    }
+    else
     {
         humane.error("Hubo un error al eliminar la persona.");
         SendJsError(new Error("Error DeletePersona-personas.js"), "personas.js", response);

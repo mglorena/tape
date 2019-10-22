@@ -9,9 +9,9 @@ class Conf {
     const SMTP_PORT = 25;
 
     // CUENTA ENVIO DE ERRORES
-    const ERROR_USER ='errores';
-    const FROM_ERROR = 'errores@obras.unsa.edu.ar';
-    const ERROR_PASS = 'tape';
+    const ERROR_USER ='mlgarcia';
+    const FROM_ERROR = 'mlgarcia@unsa.edu.ar';
+    const ERROR_PASS = 'miomia11';
 
     // CUENTA ENVIO DE ALERTAS
     const ALERT_USER ='mlgarcia';
@@ -20,12 +20,12 @@ class Conf {
     const TO_ALERT = 'mlgarcia@unsa.edu.ar';
     const TO_ALERT1 = 'mglorena@gmail.com'; /*** para los vehiculos****/
     
-    const BD_SERVER ='localhost';
-    const BD_USER ='root';
+    const BD_SERVER ='192.168.5.103';
+    const BD_USER ='tape';
     const BD_PASS ='oysadmin';
     const BD_NAME ='tape';
     
-    const VERSION ='2.0.0';
+    const VERSION ='2.0.1';
     //$docRoot = $_SERVER['DOCUMENT_ROOT'] . "/tape";
     
     //public $docRoot = $_SERVER['DOCUMENT_ROOT'] . "/tape";
