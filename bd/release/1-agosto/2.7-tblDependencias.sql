@@ -1,5 +1,0 @@
-
-ALTER TABLE `Dependencias` 
-ADD COLUMN `UsedBy` VARCHAR(45) NULL AFTER `PadreId`,
-ADD COLUMN `Sigla` VARCHAR(45) NULL AFTER `UsedBy`,
-ADD COLUMN `TipoCentroG` INT NULL AFTER `Sigla`;
