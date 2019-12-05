@@ -42365,3 +42365,427 @@ Se ejecuto : call servicios_update(23,842,10,2019,3);
 Resultado : 1
 Se ejecuto : call servicios_update(200,496,10,2019,3);
 Resultado : 1
+Se ejecuto : call servicios_update(159,30371.5,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(160,46083,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(161,63700.6,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(162,98011.6,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(163,71271,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(164,80659.3,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(165,12355,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(167,136260,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(170,266343,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(171,57392.8,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(173,1244.7,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(174,15778.9,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(175,8689,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(191,91128,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(192,96351,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(168,353991,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(169,114239,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(172,32564,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(176,33336,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(177,39571.9,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(178,30735.0,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(179,65098.9,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(180,43263.6,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(181,256,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(182,35887.4,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(184,52301,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(185,1729,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(186,12093.9,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(187,992437,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(188,111407,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(189,3208.4,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(190,4249.1,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(193,166941,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(194,21313,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(196,92938,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(197,31922,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(159,30372,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(160,46083,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(161,63701,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(162,98012,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(163,71271,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(164,80659,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(165,12355,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(167,136260,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(170,266343,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(171,57393,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(173,101245,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(174,15779,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(175,8689,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(191,91128,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(192,96351,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(168,353991,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(169,114239,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(172,32564,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(176,33336,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(177,39572,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(178,30735,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(179,65099,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(180,43264,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(181,256,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(182,35887,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(184,52301,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(185,1729,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(186,12094,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(187,992437,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(188,111407,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(189,3208,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(190,4249,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(193,166941,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(194,21313,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(196,92938,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(197,31922,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(159,30372,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(160,46083,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(161,63701,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(162,98012,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(163,71271,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(164,80659,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(165,12355,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(167,136260,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(170,266343,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(171,57393,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(173,101245,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(174,15779,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(175,8689,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(191,91128,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(192,96351,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(168,353991,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(169,114239,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(172,32564,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(176,33336,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(177,39572,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(178,30735,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(179,65099,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(180,43264,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(181,256,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(182,35887,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(184,52301,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(185,1729,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(186,12094,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(187,996437,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(188,111407,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(189,3208,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(190,4249,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(193,166941,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(194,21313,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(196,92938,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(197,31922,11,2019,2);
+Resultado : 1
+Se ejecuto : call servicios_update(34,782,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(88,4252,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(95,2505,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(99,1216,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(201,35,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(35,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(36,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(38,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(39,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(40,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(41,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(42,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(43,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(44,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(45,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(46,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(47,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(48,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(49,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(50,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(51,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(52,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(53,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(54,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(55,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(56,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(57,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(58,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(59,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(60,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(61,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(62,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(63,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(65,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(66,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(67,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(68,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(69,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(70,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(71,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(72,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(73,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(74,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(75,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(76,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(77,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(78,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(79,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(80,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(81,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(82,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(83,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(84,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(85,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(86,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(87,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(89,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(90,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(91,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(92,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(93,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(94,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(96,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(97,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(98,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(100,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(101,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(102,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(103,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(104,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(105,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(106,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(107,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(108,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(109,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(110,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(111,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(195,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(198,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(199,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(202,0,11,2019,1);
+Resultado : 1
+Se ejecuto : call servicios_update(1,276405,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(4,5984,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(7,51751,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(22,21511,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(3,0,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(5,0,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(6,0,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(8,0,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(9,0,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(10,0,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(11,0,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(12,0,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(13,0,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(14,0,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(15,0,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(16,0,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(17,0,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(18,0,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(19,0,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(20,0,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(21,0,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(23,0,11,2019,3);
+Resultado : 1
+Se ejecuto : call servicios_update(200,0,11,2019,3);
+Resultado : 1
