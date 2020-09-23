@@ -1099,9 +1099,9 @@ class TapeMailer {
         // Add all attachments
         for ($i = 0; $i <= count($this->attachment); $i++) {
             // Check for string attachment
-            //echo "HAYYY [" . $i . "]\n";
+            if($this->attachment[$i]){echo "HAYYY [" . $i . "]\n";
             //echo count($this->attachment)."\n";
-            //echo var_dump($this->attachment);
+            echo var_dump($this->attachment);
             $isString = $this->attachment[$i][5];
             if ($isString) {
                 $string = $this->attachment[$i][0];
@@ -1141,6 +1141,7 @@ class TapeMailer {
                 }
 
                 $mime[] = sprintf("--%s--%s", $this->boundary[1], $this->LE);
+            }
             }
         }
 //echo "<br/>".join("", $mime);

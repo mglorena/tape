@@ -1274,9 +1274,12 @@ function SaveHoraEx(form, action)
         rec['Descansos'] = descan;
         rec['Hora50'] = Ext.getCmp('Hora50').getValue();
         rec['Hora100'] = Ext.getCmp('Hora100').getValue();
+        rec['Hora100'] = (rec['Hora100'] == '' ? '00:00': rec['Hora100']);
+        rec['Hora50'] = (rec['Hora50'] == '' ? '00:00': rec['Hora50']);
         rec['Jornada'] = (bj ? 1 : 0);
         var horaex = JSON.stringify(rec);
-        console.log(horaex);
+        //console.log("tesssssssssssssssssssssssssssssssssssssssssss");
+        //console.log(horaex);
         x_SaveHoraEx(horaex, SaveHoraEx_callback);
     }
     catch (e)

@@ -12,6 +12,7 @@ var anio = date.getFullYear();
 var mesNom = date.toLocaleString();
 
 
+
 x_LoadServicios(mes, anio, tservicioId, LoadServicios_callback);
 
 var grid, ridx;
@@ -30,7 +31,7 @@ function GridPanel(store)
 {
     // create the grid and specify what field you want
     // to use for the editor at each column.
-    var anios = [[2010, '2010'], [2011, '2011'], [2012, '2012'], [2013, '2013'], [2014, '2014'], [2015, '2015'], [2016, '2016'], [2017, '2017'], [2018, '2018']];
+    var anios = [[2010, '2010'], [2011, '2011'], [2012, '2012'], [2013, '2013'], [2014, '2014'], [2015, '2015'], [2016, '2016'], [2017, '2017'], [2018, '2018'],[2019,'2019']];
 
     var stanio = new Ext.data.ArrayStore({
         fields: ['id', 'anio'],
