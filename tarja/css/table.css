@@ -1,0 +1,110 @@
+/* 
+        Cusco Sky table styles
+        written by Braulio Soncco http://www.buayacorp.com
+*/
+
+
+#minical th, #minical td {
+    border: 1px solid #D4E0EE;
+    border-collapse: collapse;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    color: #555;
+    text-transform: uppercase;
+    text-align:right;font-size: 9px !important;
+}
+
+caption {
+    font-size: 150%;
+    font-weight: bold;
+    margin: 5px;
+}
+
+#minical td, th {
+    padding: 4px;
+}
+
+#minical thead th {
+    text-align: center;
+    background: #E6EDF5;
+    color: #4F76A3;
+    font-size: 9px !important;
+    height:18px;
+}
+
+#minical tbody th {
+    font-weight: bold;
+}
+
+#minical tbody tr { background: #FCFDFE; }
+
+#minical tbody tr.odd { background: #F7F9FC; }
+
+#minical  a:link {
+    color: #00000;
+    text-decoration: none;
+}
+
+#minical a:visited {
+    color: #00000;
+    text-decoration: none;
+}
+
+#minical a:hover {
+    color: #00000;
+    text-decoration: underline !important;
+}
+
+#minical tfoot th, tfoot td {
+    font-size: 9px;
+}
+.headbox{
+    height:30px;
+    font-size:9px;
+}
+.labelinfo
+{
+    font-size:12px;
+    text-align:left;
+    color:#000;
+    font-weight: bold;
+    border: 0px solid #D4E0EE;
+    border-collapse: collapse;
+    padding:3px;
+}
+.textinfo
+{
+    font-size:12px;
+    text-align:left;
+    color:#000;
+    border: 0px solid #D4E0EE;
+    border-collapse: collapse;
+    text-indent: 5px;
+}
+#info{
+    background-color: #F7F9FC;
+    border-collapse: collapse;
+}
+.x-field-label-cell , x-form-trigger-input-cell, x-form-item-body , x-form-trigger-wrap
+{
+    border:none;
+}
+.rot-neg-90 {
+    -moz-transform:rotate(-270deg); 
+    -moz-transform-origin: bottom left;
+    -webkit-transform: rotate(-270deg);
+    -webkit-transform-origin: bottom left;
+    -o-transform: rotate(-270deg);
+    -o-transform-origin:  bottom left;
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+    display:inline-block
+}
+.titleTH
+{
+    text-align:center;
+    font-weight:bold;
+    font-size:12px;
+}
+.diabox{
+    height:25px;
+    font-size:9px;
+}

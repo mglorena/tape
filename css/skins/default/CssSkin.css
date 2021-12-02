@@ -1,0 +1,874 @@
+﻿
+body
+{
+	background-color: #EDFFFF;
+	background-image: url(Images/BgPageMiddle.jpg);
+}
+
+.pageBody
+{
+	background-color: #FFFFFF;
+}
+
+select
+{
+}
+
+fieldset
+{
+	color: #000000;
+}
+
+input
+{
+}
+select
+{
+	border-color: #6F6F6F !important;
+	color: #45535b !important;
+}
+a 
+{
+	color: #0086FF;
+}
+a.link
+{
+	color: #0086FF;
+}
+a.hover
+{
+	color: #0086FF;
+}
+a.vlink
+{
+	color: #0086FF;
+}
+
+.title1, .title2, .title3, .title4
+{
+    color:#818181;
+}
+
+.textbox, .textboxMoney
+{
+	background-color: #FFFFFF;
+	color: #000000;
+	border-color: #818181;
+}
+.textboxDate
+{
+	background-color: #FFFFFF;
+	color: #000000;
+	border-color: #818181;
+	background-color: #FFFFFF;
+	background-image: url(../../../images/Calendar.png);
+	background-position: right;
+	background-repeat: no-repeat;
+	margin-right: 10px;
+}
+
+.txtQuickSearch
+{
+	background-color: Transparent;
+}
+
+.tabQuickSearch
+{
+	background-image: url(Images/SearchMiddle.jpg);
+	border-top-color: #0388FF;
+	border-bottom-color: #0388FF;
+}
+
+.tablabels
+{
+	color: #5B676C;
+	background-color: #FFFFFF;
+}
+.tablabelsLeft
+{
+	color: #5B676C;
+	background-color: #FFFFFF;
+}
+
+.tabcontrols
+{
+	color: #5B676C;
+	background-color: #FFFFFF;
+}
+.tabempty
+{
+	color: #5B676C;
+	background-color: #FFFFFF;
+}
+/* 
+.buttons
+{
+   background-color:#808080;    
+    outline-color: Black;
+    color:#FFFFFF;
+    background-image: url(../../../Images/ButtonOn.png)
+}
+
+.buttons:hover
+{        
+    color:#FFFFFF; 
+    background-color:#606060;
+    background-image: url(../../../Images/ButtonOn.png)
+}
+ */
+.bigbuttons
+{
+}
+
+.pageTitle
+{
+	color: #0389ff;
+}
+
+.sectionTitle
+{
+}
+
+.groupingBox
+{
+}
+
+.tabSelected
+{
+	color: #0388FF; /*  background-image:url(); FALTA IMAGEN */
+	border-top-color: #CCCCCC;
+	border-left-color: #CCCCCC;
+	border-right-color: #CCCCCC;
+}
+
+.tabUnselected
+{
+	color: #000000;
+	border-bottom-color: #CCCCCC;
+}
+.tabUnselected:hover
+{
+	background-color: Gray;
+	color: White;
+}
+
+.tabDisabled
+{
+	color: #999999;
+	border-bottom-color: #CCCCCC;
+}
+
+.tabSeparator
+{
+	color: #000000;
+	border-bottom-color: #CCCCCC;
+}
+
+.bgHeader
+{
+	background-image: url(Images/BgHeaderUp.jpg);
+}
+.bgBody
+{
+	/*background-image: url(Images/BgPageMiddle.jpg);*/
+}
+
+.buttonDisabled
+{
+}
+
+.txtDisabled
+{
+	background-color: #EDEDED;
+	color: #000000;
+	border-color: #818181;
+}
+
+.linkDisabled
+{
+}
+
+.dataTable
+{
+	border: solid 1px #DDDDDD;
+}
+
+/** GRID VIEW STYLE **/
+.gridRows
+{
+	background-color: White;
+	border-color: #EDEDED;
+	color: #45535b;
+}
+.tableGrid
+{
+	border-color: #EDEDED;
+}
+.tableGrid th
+{
+	border-color: #EDEDED;
+}
+.tableGrid gridRows td
+{
+	border-color: #EDEDED;
+}
+.tableGrid th td
+{
+	border-color: #EDEDED;
+}
+
+.gridRows a:link
+{
+	color: #0086FF;
+}
+
+.gridRows a:visited
+{
+	color: #0086FF;
+}
+
+.gridRows a:hover
+{
+	color: #0086FF;
+}
+
+.gridAlternate
+{
+	background-color: #F6F6F8;
+	border-color: #EDEDED;
+	color: #45535b;
+}
+
+.gridAlternate a:link
+{
+	border-color: #EDEDED;
+	background-color: #F6F6F8;
+	color: #0086FF;
+}
+
+.gridAlternate a:visited
+{
+	border-color: #EDEDED;
+	background-color: #F6F6F8;
+	color: #0086FF;
+}
+
+.gridAlternate a:hover
+{
+}
+
+.gridSelected
+{
+	border-color: #EDEDED;
+}
+
+.gridSelected a
+{
+	background-color: #DDDDDD;
+	color: #0289FF;
+}
+.gridSelected a:link
+{
+	background-color: #DDDDDD;
+	color: #0289FF;
+}
+.gridSelected a:visited
+{
+	background-color: #DDDDDD;
+	color: #0289FF;
+}
+
+.gridSelected a:hover
+{
+	background-color: #DDDDDD;
+	color: #0289FF;
+}
+
+.gridHeader
+{
+	color: #ABABAB;
+	border-color: #EDEDED;
+}
+
+.gridHeader a
+{
+	color: #ABABAB;
+}
+
+.gridFooter
+{
+	color: #45535b;
+}
+
+.gridFooter a
+{
+}
+
+.tabletters
+{
+	background-color: #FFFFFF;
+	color: #0086FF;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.headOptions, headOptions a
+{
+	color: #000000;
+}
+
+.textToolBar
+{
+	color: #000000;
+	background-color: #ECEDEF;
+}
+.textToolBar a
+{
+	color: #000000;
+	background-color: #ECEDEF;
+}
+
+.documentViewer
+{
+	background-color: #919191;
+}
+.imageToolBar
+{
+	background-color: #656565;
+	border-left-color: #000000;
+}
+
+.Information 
+{
+	color: #000000;
+	background-color: #FFFFFF;
+	border-color: #818181;	
+}
+
+.ProcessingInfo
+{
+    color:#000;
+    background-color:#FFFACD;    
+    border-color:Black;
+}
+
+.InfoMessage
+{
+    color: Red;
+}
+
+
+.tabTitle
+{
+	background-color: #FFFFFF;
+	color: #118fff;
+}
+.msgTitle
+{
+	background-color: #FFFFFF;
+	color: #45535B;
+}
+/***************  Menu  ***************/
+.logoSection
+{
+	border-bottom-color: #00FFFF;
+}
+.selectedTab
+{
+	border-bottom-color: #00FFFF;
+}
+.unSelectedTab
+{
+	border-bottom-color: #00FFFF;
+}
+*
+{
+	padding: 0;
+	margin: 0;
+}
+.dropdown dt
+{
+	color: #45535b;
+	border-color: Transparent;
+}
+.dropdown dt:hover
+{
+	color: #0086ff;
+	border-color: #00FFFF;
+	background-color: #fff;
+}
+.dropdown dd
+{
+	background: #fff;
+}
+.dropdown ul
+{
+	border-color: #00FFFF;
+}
+.dropdown a, .dropdown a:active, .dropdown a:visited
+{
+	color: #45535b;
+	background: #fff;
+}
+.dropdown a:hover
+{
+	background: #fff;
+	color: #0086ff;
+}
+.dropdown a:hover .dropdown dt
+{
+	border-color: Transparent;
+}
+.dropdown .underline
+{
+	border-color: #00FFFF;
+}
+.selectedTab .dropdown dt
+{
+	color: #0086ff;
+	border-color: #00FFFF;
+}
+
+.unSelectedTab .dropdown dt:hover
+{
+	color: #0086ff;
+	border-color: #00FFFF;
+	background-color: #fff;
+}
+.unSelectedTab:hover .dropdown dt
+{
+	color: #0086ff;
+	border-color: #00FFFF;
+	background-color: #fff;
+}
+.borderMenu
+{
+	border-bottom-color: #00FFFF;
+}
+.tdMenuleft
+{
+	border-bottom-color: #00FFFF;
+	/*background-image:url(Images/LineLeftBakcground.png);*/
+}
+/**********************************************/
+.HomeDark
+{
+	background-image: url(Images/BgPageMiddle.jpg);
+	
+}
+.HomeDark
+{
+	background-image: url(Images/BgPageMiddle.jpg);
+	
+}
+/***********************************************/
+/***********************************************/
+/************ list Order and Filter **************/
+/********************************************************/
+/*                        LIST                          */
+/********************************************************/
+.tableTitleOF
+{
+	border-color: #EDEDED;
+}
+.tableListOF
+{
+	border-bottom-color: #EDEDED;
+	border-left-color: #EDEDED;
+}
+tr.listtitle td
+{
+	background-color: #fff;
+	color: #AAAAAA;
+}
+tr.listtitle th
+{
+	background-color: #fff;
+	color: #AAAAAA;
+}
+
+td.listtitle
+{
+	background-color: #fff;
+	color: #AAAAAA;
+}
+
+tr.listitemhighlighted td
+{
+	border-bottom-color: #EDEDED;
+	background-color: #EDF9FF;
+	color: #45535b;
+}
+tr.underline td
+{
+	border-bottom-color: #808080;
+}
+tr.listselected td
+{
+	border-bottom-color: #EDEDED;
+	border-right-color: #EDEDED;
+	background-color:#C8C8C8;
+	color: #45535b;
+}
+tr.listselected td.borderright
+{
+	border-bottom-color: #EDEDED;
+	border-right-color: #EDEDED;
+	background-color:#C8C8C8;
+	color: #45535b;
+}
+tr.listitemeven td
+{
+	border-bottom-color: #EDEDED;
+	border-right-color: #EDEDED;
+	background-color: #F6F6F8;
+	color: #45535b;
+}
+tr.listitemuneven td
+{
+	border-bottom-color: #EDEDED;
+	border-right-color: #EDEDED;
+	background-color: #FFFFFF;
+	color: #45535b;
+}
+
+tr.listitemeven td.borderright
+{
+	border-bottom-color: #EDEDED;
+	border-right-color: #EDEDED;
+	background-color: #000000;
+	color: #45535b;
+}
+
+tr.listitemuneven td.borderright
+{
+	border-bottom-color: #EDEDED;
+	border-right-color: #EDEDED;
+	background-color: #FFFFFF;
+	color: #45535b;
+}
+
+tr.listsummary td
+{
+	background-color: #FFF1E6;
+	color: #45535b;
+}
+tr.listsummarydivisor td
+{
+	background-color: #d9f2ff;
+	color: #45535b;
+	border-bottom-color: #EDEDED;
+}
+tr.listitemevenGeneric td
+{
+	border-bottom-color: #EDEDED;
+	background-color: #f3f1a4;
+	color: #45535b;
+}
+/**************Folder****************/
+span.Folder
+{
+	color: #1E5C7A;
+}
+/************************************/
+/**************SET*******************/
+tr.listsummarydivisorset td
+{
+	background-color: #FEF3E7;
+	color: #000000;
+	border-bottom-color: #7ABDDD;
+}
+span.Set
+{
+	color: #D48200;
+}
+/********************* AUTOCOMPLETE ****************************/
+.floater td
+{
+	background-color: white;
+	color: black;
+	border-color: #979797;
+}
+
+.selectedSmartInputItem
+{
+	color: white;
+	background-color: #3875D7;
+}
+.selectedSmartInputItemId
+{
+	color: #3875D7;
+}
+.unSelectedSmartInputItemId
+{
+	color: white;
+}
+.siwCredit
+{
+	color: black;
+}
+/**************************************************************/
+
+/************************ Rounded Buttons  ****************************/
+button.clientButton:hover
+{
+	background: url(images/btnRightOn.png) right no-repeat;
+}
+button.clientButton:hover span
+{
+	background: url(images/btnLeftOn.png) left no-repeat;
+}
+.buttonsSecondsLeft
+{
+	background: url(images/LeftOn.png) left no-repeat;
+}
+.buttonsSecondsMiddle
+{
+	background: url(images/MiddleOn.png);
+}
+.buttonsSecondsRight
+{
+	background: url(images/RightOn.png) left no-repeat;
+}
+/**************************************************************/
+
+.modalBackground
+{
+	background-color: #FFFFFF;
+}
+
+/******************Div - Popin*******************************/
+.BorderLeftPopin
+{
+    border-right-color:#818181;
+}
+
+.LeftLinePopin
+{
+    border-left-color: #818181;
+}
+
+.BorderRightPopin
+{
+	background-image: url(../../../Images/shadowRight.png);
+	background-position: left;
+	background-repeat: repeat-y;
+}
+
+.BorderTopPopin
+{
+    /*
+	background-image: url(../../../Images/shadowBottom.png);
+	background-position: bottom;
+	background-repeat: repeat-x; */
+	border-top-color: #818181;
+}
+.BorderBottomPopin
+{
+	background-image: url(../../../Images/shadowBottom.png);
+	background-position: top;
+	background-repeat: repeat-x;
+}
+.BorderBottomRightPopin
+{
+	background-image: url(../../../Images/shadowBottomRight.png);
+	background-repeat: no-repeat;
+}
+
+.Popin
+{
+}
+.BodyPopin
+{
+}
+.BorderLeftTop
+{
+	border-color: #aaaaaa;
+	background-color: #ffffff;
+}
+/***** LOGIN ******/
+.backgroundLoginPage
+{
+	background-color: #e3ffff;
+	
+	
+}
+
+/************ footer ***************/
+.secFooterRight
+{
+	color: #a0a1a1;
+	border-bottom-color: white;
+}
+a.linkFooterRight
+{
+	color: #a0a1a1;
+}
+a.linkFooterRight:hover
+{
+	color: #000000;
+}
+.secFooterLeft
+{
+	border-right-color: white;
+	color: #21accf;
+}
+.divisorFooter
+{
+	background-image: url(Images/LineFooterDown.jpg);
+}
+.divFooter
+{
+	background-color: Transparent;
+}
+.secFooterLeft a
+{
+	color: #21accf;
+}
+a.linkFooter
+{
+	color: #21accf;
+}
+a.linkFooter:hover
+{
+	color: #000000;
+}
+
+
+a.serverButton:hover
+{
+	background: url(images/btnRightOn.png) right no-repeat;
+}
+a.serverButton:hover span
+{
+	background: url(images/btnLeftOn.png) left no-repeat;
+}
+
+
+
+/*********** SEARCH ***********/
+.tdFormSearch
+{
+	border-color: #EDEDED;
+}
+.tabSearchSelected
+{
+	color: #118fff;
+	border-color: #EDEDED;
+	background-image:url(Images/search/BgTag.jpg);
+}
+
+.tabSearchUnselected
+{
+	border-color: #EDEDED;
+	color: #118fff;
+}
+.tabSearchUnselected td 
+{
+	border-color: #EDEDED;
+	color: #118fff;
+	font-size:12px;
+}
+.tabSearchUnselected span
+{
+	border-color: #EDEDED;
+	color: #118fff;
+	font-size:12px;
+}
+.searchLeft
+{
+	background-image: url(Images/search/Left.jpg);
+}
+.searchRight
+{
+	background-image: url(Images/search/Right.jpg);
+}
+.searchMiddle
+{
+	background-image: url(Images/search/Middle.jpg);
+}
+.searchMiddle input
+{
+	background-image: none;
+	background-color: Transparent;
+	border: none;
+}
+.txtInputSearch
+{
+	border-color: #818181;
+}
+.resaltPopIn
+{
+	border-color: #0389ff;
+}
+.linkpaging
+{
+	color: #0086FF;
+}
+.spanpaging
+{
+	color: #0086FF;
+}
+td.listtitlePaging a /*, span */
+{
+	color: #0086FF;
+}
+/************ POPIN CENTER - modal jquery *******/
+#boxes #divPopinInsured
+{
+	border-color: #01FFFF;
+}
+
+/**********************/
+
+.HeadDropDownChek{
+   
+	background-color: #EDFFFF;
+	/*background-color:#626969;*/
+	position:absolute;
+	text-align:left;
+	padding-top:2px;
+	display:none;
+	border:solid 1px black;
+	width:200px;
+	padding-right:2px;
+}   
+
+.TitleDropDownCheck{ 
+ 
+ padding-left:10px;
+ padding-bottom:13px;
+ width:100%;
+}
+a.DropDownCheklink
+{
+    font-family: Arial, Verdana, helvetica;
+    font-size: 13px;
+    font-weight: bold;
+    color: #A0A1A1; 
+    
+}
+a.DropDownCheklink:hover
+{
+	font-size: 13px;
+	font-style: normal;	
+	color: #0389ff; 
+}
+
+
+.alertIconWarning
+{
+    background-image: url(Images/PopUp/Warn.png);
+    background-position:center center;
+    background-repeat:no-repeat;
+    
+}
+.alertIconInfo
+{
+    background-image: url(Images/PopUp/Info.png);
+    background-position:center center;
+    background-repeat:no-repeat;
+}
+
+
+    
