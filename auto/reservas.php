@@ -161,6 +161,7 @@ function LoadReservas($dia,$mes, $anio, $type, $estado) {
     $tve = new TipoVehiculo();
     $ve = new Vehiculo();
     $ch = new Chofer();
+    if($dia == 0) $dia = NULL;
     $reservas = $reservaSearch->Search($dia,$mes, $anio, $type, $estado);
     $response = array("1" => $reservas, "2" => $tve->GetAll(), "3" => $ve->GetAll(), "4" => $ch->GetAll());
     return $response;

@@ -105,7 +105,7 @@ function GrabarArticulo($p) {
         $p->Fecha = $per->Fecha;
         $p->CantHoras = ($per->CantHoras == null) ? $per->CantHoras = "NULL" : $per->CantHoras;
 
-        if ($p->ArticuloId == "14" || $p->ArticuloId == "4") {
+        if ($p->ArticuloId == "14" || $p->ArticuloId == "4" || $p->ArticuloId == "17") {
             $d1 = new DateTime($p->Desde);
             $d2 = new DateTime($p->Hasta);
             $interval = $d1->diff($d2);

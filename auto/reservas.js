@@ -6,7 +6,7 @@
 /****************/
 var CurrentObject;
 var date = new Date();
-var dia = null;
+var dia = 0;
 var mes = date.getMonth() + 1;
 var anio = date.getFullYear();
 var mesNom = date.toLocaleString();

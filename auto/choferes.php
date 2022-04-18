@@ -45,6 +45,8 @@ function SaveChofer($cch) {
         $ch->copy($chofer);
         if (!isset($ch->ChoferId))
             $ch->ChoferId = 0;
+        if($ch->ValorHoraHabil === "") $ch->ValorHoraHabil=0;
+	if($ch->ValorHoraInhabil === "") $ch->ValorHoraInhabil =0;
         $ch->ValorHoraHabil = str_replace(",", ".", $ch->ValorHoraHabil);
         $ch->ValorHoraInhabil = str_replace(",", ".", $ch->ValorHoraInhabil);
         $ch->Active = ($ch->Active == "on" ? "1" : "0");

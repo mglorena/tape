@@ -18,9 +18,9 @@ class Chofer {
             $LastName = '',
             $Legajo = 'NULL',
             $Celular = '',
-            $ValorHoraInhabil = 'NULL',
-            $ValorHoraHabil = 'NULL',
-            $ValorHoraExtra = 'NULL',
+            $ValorHoraInhabil = 0,
+            $ValorHoraHabil = 0,
+            $ValorHoraExtra = 0,
             $Licencia1 = 'NULL',
             $Licencia2 = 'NULL',
             $Licencia3 = 'NULL',
@@ -132,7 +132,7 @@ class Chofer {
     function Save() {
         $query = "";
         try {
-            $query = "call choferes_update(" . $this->ChoferId . ",'" . $this->FirstName . "','" . $this->LastName . "','" . $this->Legajo . "','" . $this->Celular . "','" . $this->ValorHoraExtra . "','" . $this->ValorHoraHabil . "','" . $this->ValorHoraInhabil . "'," . $this->Active . ");";
+            $query = "call choferes_update(" . $this->ChoferId . ",'" . $this->FirstName . "','" . $this->LastName . "','" . $this->Legajo . "','" . $this->Celular . "'," . $this->ValorHoraExtra . "," . $this->ValorHoraHabil . "," . $this->ValorHoraInhabil . "," . $this->Active . ");";
             $db = new sqlprovider();
             $db->getInstance();
             $db->setQuery($query);
