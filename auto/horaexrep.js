@@ -340,7 +340,7 @@ function ResumeHeader()
         {
             title = "<div align='center'><u>HORAS EXTRAORDINARIAS </u>: " + depText + "</div>";
             addHeader += "<div>Apellido y Nombre : " + chText + "</div>";
-            addHeader += "<div>Cargo: Chofer</div>";
+            //addHeader += "<div>Cargo: Chofer</div>";
             colshide = "4,5";
             footer = "<br/><br/><br/><div style='top:600;left:0'><table cellpadding='2' cellspacing='2' style='border-width:0px;'>" +
                     "<tr  style='border-width:0px;'><td  style='border-width:0px;'>--------------------</td><td  style='border-width:0px;'>----------------------------</td></tr>" +
@@ -351,7 +351,7 @@ function ResumeHeader()
         {
             title = "<div align='center'><u>HORAS EXTRAORDINARIAS </u>: " + chText + "</div>";
             addHeader += "<div>Apellido y Nombre : " + chText + "</div>";
-            addHeader += "<div>Cargo: Chofer</div>";
+            //addHeader += "<div>Cargo: Chofer</div>";
             colshide = '4';
             footer = "<br/><br/><br/><div style='top:600;left:0'><table cellpadding='2' cellspacing='2' style='border-width:0px;'>" +
                     "<tr  style='border-width:0px;'><td  style='border-width:0px;'>--------------------</td><td  style='border-width:0px;'>----------------------------</td></tr>" +

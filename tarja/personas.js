@@ -167,6 +167,7 @@ function GuardarPersona(form, action)
             }
             rec['PersonaId'] = CurrentObject.data['PersonaId'];
             personas = JSON.stringify(rec);
+	    console.log(personas);
             x_GuardarPersona(personas, GuardarPersona_callback);
         }
         else
@@ -244,6 +245,7 @@ function PopinPersona(action, record, rIdx, grid)
                         id: "new-record-add-button",
                         handler: function () {
                             var form = this.up("form").getForm();
+                            
                             if (form.isValid())
                             {
                                 GuardarPersona(form, action);

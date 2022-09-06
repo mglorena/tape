@@ -19,7 +19,7 @@ class Persona {
     var
             $Nombre = '',
             $Apellido = '', $Domicilio = '', $ArticuloId = '', $Observaciones = 'NULL', $FechaIngreso = 'NULL',
-            $CargoDesc = '', $Categoria = '', $CantHoras = '', $Desde = 'NULL', $Hasta = 'NULL', $DNI = 'NULL',
+            $CargoDesc = '', $Categoria = '', $CantHoras = '', $Desde = 'NULL', $Hasta = 'NULL', $DNI = 'NULL',$TipoDNI='',
             $Compensatorio = 'NULL', $CP = 'NULL', $LicAnt = 'NULL', $LicA = 'NULL', $Total = 'NULL', $Telefono = 'NULL',
             $Compensatorios = 'NULL', $FechaNac = 'NULL',$Email ='',
             $Legajo = 'NULL',$Activo='NULL',$CUIL='',
@@ -201,7 +201,7 @@ class Persona {
         $query = "";
         try {
 
-            $query = "call personas_update(" . $this->PersonaId . ", '" . $this->Apellido . "', '" . $this->Nombre . "', '" . $this->Legajo . "', '" . $this->CargoDesc . "', " . $this->Categoria . ", '" . $this->Domicilio . "', '" . $this->Telefono . "', '" . $this->FechaNac . "', '" . $this->DNI . "', " . $this->Activo . " , '" . $this->FechaIngreso . "');
+            $query = "call personas_update(" . $this->PersonaId . ", '" . $this->Apellido . "', '" . $this->Nombre . "', '" . $this->Legajo . "', '" . $this->CargoDesc . "', " . $this->Categoria . ", '" . $this->Domicilio . "', '" . $this->Telefono . "', '" . $this->FechaNac . "', '" . $this->TipoDNI . "', '" . $this->DNI . "', " . $this->Activo . " , '" . $this->FechaIngreso . "');
                     ";/*
  $e = new Errors();
             $e->SendErrorMessage(new Exception("no inserta fecha de ingreso"), "cpersonas.php - Guardar", $query);

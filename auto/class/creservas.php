@@ -92,6 +92,7 @@ class Reserva {
         try {
             $db = new sqlprovider();
             $db->getInstance();
+	    if($dia == "" || is_null($dia) || !isset($dia) || empty($dia)){ $dia='1900-01-01';}
             $query = "call reservas_Search('" . $dia . "'," . $mes . "," . $anio . "," . $typeve . "," . $estado . ");";
 
             if ($db->setQuery($query)) {
@@ -112,7 +113,7 @@ class Reserva {
         try {
             $db = new sqlprovider();
             $db->getInstance();
-            $query = "call reservas_rptVehiculo(" . $veId . "," . $mes . "," . $anio . "," . $estado . ");";
+            $query = "call reservas_ReporteVehiculo(" . $veId . "," . $mes . "," . $anio . "," . $estado . ");";
 
             if ($db->setQuery($query)) {
                 $reservas = $db->ListObject();
@@ -132,7 +133,7 @@ class Reserva {
         try {
             $db = new sqlprovider();
             $db->getInstance();
-            $query = "call reservas_rptVehiculoDispo('" . $desde . "','" . $hasta . "'," . $veId . ");";
+            $query = "call reservas_ReporteVehiculoDisp('" . $desde . "','" . $hasta . "'," . $veId . ");";
             /* $e = new Errors();
               $e->SendErrorMessage(new Exception("testing"), "creservas.php - reservas_ReporteVehiculoDisp", $query); */
             if ($db->setQuery($query)) {

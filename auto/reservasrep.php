@@ -32,7 +32,7 @@ function LoadReservas($dia,$mes, $anio, $type, $estado) {
     $tve = new TipoVehiculo();
     $ve = new Vehiculo();
     $ch = new Chofer();
-    if($dia ='null') $dia='1990/01/01';
+    if($dia ='null') $dia='1900/01/01';
     $reservas = $reservaSearch->Search($dia,$mes, $anio, $type, $estado);
     $response = array("1" => $reservas, "2" => $tve->GetAll(), "3" => $ve->GetAll(), "4" => $ch->GetAll());
     return $response;
