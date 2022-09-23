@@ -232,6 +232,7 @@ function FormField(record)
             },
             {
                 fieldLabel: 'Distancia (Km)',
+		xtype:'numberfield',
                 name: 'Distancia',
                 value: (record ? record.data['Distancia'] : null),
                 width: 160
