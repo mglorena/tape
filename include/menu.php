@@ -80,6 +80,11 @@ $rulesIds = explode(",", $_SESSION['S_rules']);
                         url: 'auto/reservasrepv.php',
                         stateId: '23',
                         handler: oUrlClick});
+
+                    rsub.push({text: 'Reporte por Chofer',
+                        url: 'auto/reservasrepch.php',
+                        stateId: '23',
+                        handler: oUrlClick});
                     rsub.push({text: 'Reporte por Vehiculo Disponibilidad',
                         url: 'auto/reservasrepv2.php',
                         stateId: '23',

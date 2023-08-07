@@ -6,9 +6,8 @@
 
 
 $salt = md5(uniqid(rand(), true)); // O incluso mejor si tuviese mayúsculas, minúsculas, caracteres especiales...
-$hash = hash('sha512', $salt . 'merilesunsa');
-echo "Contraseña de Lorena:\n";
+$hash = hash('sha512', $salt . 'unsa.2023');
+echo "Contraseña: unsa.2023";
 echo "\nSalt:". $salt;
-
-echo "\n\n New Pass :" . $hash ."\n";
+echo "\nNew Pass :" . $hash ."\n";
 

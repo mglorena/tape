@@ -30,12 +30,12 @@ class sqlprovider {
             mysqli_select_db($this->conexion, Conf::BD_NAME);
             $this->queries = 0;
             $this->resource = null;
-	    mysqli_query("SET character_set_client=utf8"); 
+	   /* mysqli_query("SET character_set_client=utf8"); 
 	    mysqli_query("SET character_set_connection=utf8"); 
 	    mysqli_query("SET character_set_database=utf8"); 
 	    mysqli_query("SET character_set_results=utf8"); 
 	    mysqli_query("SET character_set_server=utf8"); 
-	    mysqli_query("SET NAMES 'utf8'");
+	    mysqli_query("SET NAMES 'utf8'");*/
             $this->sql = utf8_encode($this->sql);
 	    if(!$this->conexion->set_charset("utf8")){
 		  $error->SendMysqlErrorMessage("Error cargando el conjunto de caracteres utf8: %\n", $this->conexion->error);

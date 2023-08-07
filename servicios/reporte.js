@@ -237,8 +237,8 @@ function ResumeHeader()
     var mesNom = new Date(date.getUTCFullYear(), mes - 1, 1);
     header += "<div style='clear:both;'></div>";
     header += "<div style='border-top:solid 1px black;border-left:solid 1px black;border-right:solid 1px black;padding-left:3px;'>";
-    header += "<div class='efact'>Fecha: " + date.getDate() + "/" + parseInt(date.getMonth() + 1) + "/" + date.getUTCFullYear() + "   </div>";
-    header += "<div class='efact'> Periodo: " + "01/" + mes + "/" + anio + " a " + d.getDaysInMonth() + "/" + mes + "/" + anio + "   </div>";
+    header += "<div class='efact'>FECHA LECTURA: " + date.getDate() + "/" + parseInt(date.getMonth() + 1) + "/" + date.getUTCFullYear() + "   </div>";
+    header += "<div class='efact'> PERIODO: " + "01/" + mes + "/" + anio + " a " + d.getDaysInMonth() + "/" + mes + "/" + anio + "   </div>";
     header += "<div class='efact'> 1º Venc.: " + +v1.getDate() + "/" + v1.getMonth() + "/" + anio + "  </div>";
     header += "<div class='efact'> 2º Venc.: " + v2.getDate() + "/" + v2.getMonth() + "/" + anio + "  </div>";
     header += "<div style='clear:both;'></div>";

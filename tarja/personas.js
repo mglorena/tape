@@ -297,6 +297,7 @@ function GridPanel(store)
                     header: 'Nombre',
                     dataIndex: 'Empleado',
                     flex: 1,
+		    width: 200,
                     editor: {
                         allowBlank: false
                     }
@@ -416,8 +417,8 @@ function GridPanel(store)
                 }
             ],
             renderTo: 'tblPersonas',
-            width: 900,
-            height: 457,
+            width: 1024,
+            height: 600,
             title: 'Personal  - Dirección General de Obras y Servicios',
             frame: true,
             tbar: [{

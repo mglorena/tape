@@ -280,8 +280,8 @@ function GridPanel(store)
                 }
             ],
             renderTo: 'tblChoferes',
-            width: 900,
-            height: 457,
+            width: '99%',
+            height: '78%',
             title: 'Choferes - Automotores UNSa',
             frame: true,
             tbar: [{

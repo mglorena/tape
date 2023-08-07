@@ -30,7 +30,7 @@ function resizeCalendar()
     hscr = hscr-1-$('#barcal').height();
     var counttr = $("#minical tr").length-1; //numero de filas menos cabecera
     var counttd = $("#minical th").length; //numero de filas menos cabecera
-    if(wscr > 790) wscr=790;
+    if(wscr > 1024) wscr=1024;
     $('#minical').css("width", wscr);
     $('#minical').css("height", hscr);
     //alto de cada bodybox menos alto de headbox

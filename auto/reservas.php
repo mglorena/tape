@@ -127,16 +127,35 @@ function GrabarCosto($costo, $reId) {
 
 function SaveReserva($r) {
     try {
-        $reserva = json_decode($r);
+        //$reserva = json_decode($r);
+//	$reserva = json_decode($r, trJSON_UNESCAPED_UNICODEue);
+	$reserva = json_decode(utf8_encode($r), JSON_UNESCAPED_UNICODE);
+
         $re = new Reserva();
-        $re->copy($reserva);
+        //$re->copy($reserva);
+	$re->ReservaId = ($reserva['ReservaId'] ? $reserva['ReservaId'] : 0);
+        $re->Destino = utf8_decode($reserva['Destino']);
+        $re->Solicitante = utf8_decode($reserva['Solicitante']);
+        $re->EmailSolicitante = utf8_decode($reserva['EmailSolicitante']);
+        $re->AutorizadoPor = utf8_decode($reserva['AutorizadoPor']);
+        $re->ChoferesIds = $reserva['ChoferesIds'];
+        $re->VehiculoId = $reserva['VehiculoId'];
+        $re->FechaInicio = $reserva['FechaInicio'];
+        $re->HoraSalida = $reserva['HoraSalida'];
+        $re->FechaFin = $reserva['FechaFin'];
+        $re->HoraLlegada = $reserva['HoraLlegada'];
+        $re->Observacion = utf8_decode($reserva['Observacion']);
+        $re->NumPasajeros = $reserva['NumPasajeros'];
+        $re->EstadoId = $reserva['EstadoId'];
+        $re->Distancia = $reserva['Distancia'];
+	//$re->UserId = $reserva['Distancia'];
         if ($re->ReservaId == 0)
             return $re->Insert();
         else
             return $re->Save();
     } catch (Exception $ex) {
         $error = new Errors();
-        $error->SendErrorMessage($ex, "reservas.php - SaveReserva", $r);
+        $error->SendErrorMessage($ex, "reservas.php - SaveReserva con copy2", $r);
     }
 }
 

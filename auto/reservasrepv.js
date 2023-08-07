@@ -277,26 +277,18 @@ function LoadReservas_callback(response)
         var store = Ext.create('Ext.data.Store', {
             autoDestroy: true,
             pageSize: 10,
-            remoteSort: true,
+            //remoteSort: true,
             model: 'Reserva',
             proxy: {
                 type: 'memory'/*,
                  simpleSortMode: true*/
             },
-            data: data/*,
-             sorters: [{
-             property: 'Modelo',
-             direction: 'ASC'
-             }],
-             totalProperty : 8,
-             autoLoad  : {
-             params:
-             
-             {
-             start:0, 
-             limit:4
-             }
-             }*/
+            data: data,
+            sorters: [{
+                    property: 'Vehiculo',
+                    direction: 'ASC'
+                    }]
+
         });
         var grid = GridPanel(store, tve, ve);
     });

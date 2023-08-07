@@ -18,10 +18,10 @@ class Persona {
     public $VacacionesDias = null;
     var
             $Nombre = '',
-            $Apellido = '', $Domicilio = '', $ArticuloId = '', $Observaciones = 'NULL', $FechaIngreso = 'NULL',
-            $CargoDesc = '', $Categoria = '', $CantHoras = '', $Desde = 'NULL', $Hasta = 'NULL', $DNI = 'NULL',$TipoDNI='',
+            $Apellido = '', $Domicilio = '', $ArticuloId = '', $Observaciones = 'NULL', $FechaIngreso = '00:00:00',
+            $CargoDesc = '', $Categoria = '', $CantHoras = '', $Desde = 'NULL', $Hasta = 'NULL', $DNI = 'NULL',$TipoDNI='DNI',
             $Compensatorio = 'NULL', $CP = 'NULL', $LicAnt = 'NULL', $LicA = 'NULL', $Total = 'NULL', $Telefono = 'NULL',
-            $Compensatorios = 'NULL', $FechaNac = 'NULL',$Email ='',
+            $Compensatorios = 'NULL', $FechaNac = '00:00:00',$Email ='',
             $Legajo = 'NULL',$Activo='NULL',$CUIL='',
             $Active = 'NULL';
 

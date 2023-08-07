@@ -31,7 +31,7 @@ class calendario {
         $barra = "
         
         <div id=\"barcal\">
-            <div style=\"padding:5px;\">
+            <div style=\"padding:5px;width:100%\">
                 Mes: <select id=\"ddlMes\" >
                     <option value=\"1\">Enero</option>
                     <option value=\"2\">Febrero</option>
@@ -85,7 +85,7 @@ class calendario {
             "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
 
         $html = "";
-        $html.="<table id=\"minical\" cellpadding=\"0\" cellspacing=\"0\" ><thead><tr >";
+        $html.="<table id=\"minical\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" ><thead><tr >";
         // $html.="<caption>" . $meses[$month] . " " . $year . "</caption>";
         // $html.="<tr style=\"vertical-align:top\" >";
         $html.="<th>Lun</th><th>Mar</th><th>Mie</th><th>Jue</th>";

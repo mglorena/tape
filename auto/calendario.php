@@ -48,9 +48,9 @@ sajax_show_javascript();
 </script>
 <div id="content">
     <div class="titlePag" style="padding-bottom: 15px;">Calendario Automotores - <label id="lblNameMonth" class='titlePag'></label></div>
-    <div id="calendarview" style='width:790px;float:left;'>
+    <div id="calendarview" style='width:1024px;float:left;'>
     </div>
-    <div id="vehiculoview" style="width:160px;float:left;border:0px solid salmon;margin-left:10px;">
+    <div id="vehiculoview" style="width:220px;float:left;border:0px solid salmon;margin-left:10px;">
         <?php
         $ves = new Vehiculo();
         try {
@@ -60,7 +60,7 @@ sajax_show_javascript();
             $table .="<td style='border:none;text-align:left;'>Vehículo</td><td></td><td >Cap.</td></tr>";
             foreach ($vehiculos as $v) {
                 $table.="<tr >";
-                $table .="<td style='text-align:left;'>" . $v->TipoVehiculoId . ", " . $v->Modelo . " - " . $v->Patente . "</td>";
+                $table .="<td style='text-align:left;'>" . $v->Nombre . ": " . $v->Modelo . " - " . $v->Patente . "</td>";
                 $table .="<td><div style='width:10px;height:10px;background-color:" . $v->Color . "'></div></td>";
                 $table.="<td  style='text-align:center;'>" . $v->Capacidad . "</td>";
                 $table.="</tr>";

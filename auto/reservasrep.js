@@ -113,8 +113,8 @@ function GridPanel(store, tve)
             }
         ],
         renderTo: 'tblReservas',
-        width: 900,
-        height: 457,
+        width: '98%',
+        height: '78%',
         //stripeRows: true,
         title: 'Reporte Reservas Automotores UNSa',
         frame: true,
@@ -292,13 +292,20 @@ function LoadReservas_callback(response)
         var store = Ext.create('Ext.data.Store', {
             autoDestroy: true,
             pageSize: 10,
-            remoteSort: true,
+            //remoteSort: true,
             model: 'Reserva',
             proxy: {
                 type: 'memory'/*,
                  simpleSortMode: true*/
             },
-            data: data/*,
+            data: data,
+	    sorters: [{
+                    property: 'Solicitante',
+                    direction: 'ASC'
+                    }]
+
+
+/*,
              sorters: [{
              property: 'Modelo',
              direction: 'ASC'

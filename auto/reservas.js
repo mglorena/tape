@@ -240,6 +240,7 @@ function FormField(record)
             {
                 fieldLabel: 'Solicitante',
                 name: 'Solicitante',
+		afterLabelTextTpl: required,
                 value: (record ? record.data['Solicitante'] : null),
                 allowBlank: false,
                 width: 500
@@ -1354,8 +1355,8 @@ function GridPanel(store, tve)
                 }
             ],
             renderTo: 'tblReservas',
-            width: 900,
-            height: 457,
+            width: '98%',
+            height: '75%',
             //stripeRows: true,
             title: 'Reservas - Automotores UNSa',
             frame: true,
@@ -1537,17 +1538,17 @@ function LoadReservas_callback(response)
             var store = Ext.create('Ext.data.Store', {
                 autoDestroy: true,
                 pageSize: 10,
-                remoteSort: true,
+                //remoteSort: true,
                 model: 'Reserva',
                 proxy: {
                     type: 'memory'/*,
                      simpleSortMode: true*/
                 },
-                data: data/*,
+                data: data,
                  sorters: [{
-                 property: 'Modelo',
+                 property: 'Solicitante',
                  direction: 'ASC'
-                 }],
+                 }]/*,
                  totalProperty : 8,
                  autoLoad  : {
                  params:
@@ -1632,7 +1633,7 @@ function SaveReserva(form, action)
             rec['ReservaId'] = 0;
         rec['UserId'] = user;
         var reserva = JSON.stringify(rec);
-        //console.log(reserva);
+        console.log(reserva);
         x_SaveReserva(reserva, SaveReserva_callback);
     } catch (e)
     {

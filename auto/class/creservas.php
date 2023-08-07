@@ -26,28 +26,41 @@ class Reserva {
             $AutorizadoPor = '',
             $ChoferesIds = '',
             $VehiculoId = 'NULL',
-            $FechaInicio = 'NULL',
-            $HoraSalida = 'NULL',
-            $FechaFin = 'NULL',
-            $HoraLlegada = 'NULL',
+            $FechaInicio = '00:00:00',
+            $HoraSalida = '00:00',
+            $FechaFin = '00:00:00',
+            $HoraLlegada = '00:00',
             $Observacion = '',
             $FileName = '',
             $NumPasajeros = 'NULL',
             $EstadoId = 'NULL',
             $Distancia = 'NULL',
             $PrecioCombustible = 'NULL',
-            $FechaCreacion = 'NULL',
+            $FechaCreacion = '00:00:00',
             $Mantenimiento = 'NULL',
             $GastoTotal = 'NULL',
             $UserId = 'NULL',
-            $FechaMod = '';
+            $FechaMod = '00:00:00';
 
     public function copy($object) {
         foreach (get_object_vars($object) as $key => $value) {
             $this->$key = $value;
         }
     }
+    public function copy2($object){
+        try {
+            $html = "";
 
+            foreach ($object as $key => $value) {
+                $html .= $key . ': ' . $value . '<br>';
+                $this->$key = $value;
+            }
+            return $html;
+        } catch (\Throwable$th) {
+            $e = new Errors();
+            $e->SendErrorMessage($ex, "creservas.php - copy2", $object);
+        }
+    }
     function GetListReservas($fI, $fF, $reId) {
         $reservas = array();
         $query = "call reservas_getListByFechas";
@@ -126,6 +139,27 @@ class Reserva {
         }
         return null;
     }
+
+    function ReporteChofer($chId, $mes, $anio, $estado) {
+        $reservas = array();
+        $query = "call reservas_Search";
+        try {
+            $db = new sqlprovider();
+            $db->getInstance();
+            $query = "call reservas_ReporteChofer(" . $chId . "," . $mes . "," . $anio . "," . $estado . ");";
+
+            if ($db->setQuery($query)) {
+                $reservas = $db->ListObject();
+            }
+            $db->CloseMysql();
+            return $reservas;
+        } catch (Exception $ex) {
+            $e = new Errors();
+            $e->SendErrorMessage($ex, "creservas.php - ReporteChofer", $query);
+        }
+        return null;
+    }
+
 
     function ReporteVehiculoDisp($desde, $hasta, $veId) {
         $reservas = array();

@@ -36,12 +36,23 @@ function SendJsError($ex, $pageName, $object) {
 }
 
 function GuardarPersona($p) {
-    $persona = json_decode($p);
     try {
 
+	$persona = json_decode(utf8_encode($p), JSON_UNESCAPED_UNICODE);
         $pe = new Persona();
-        $pe->copy($persona);
-        $pe->Activo = ($pe->Activo == "on" ? "1" : "0");
+        $pe->Nombre = utf8_decode($persona['Nombre']);
+        $pe->Apellido = utf8_decode($persona['Apellido']);
+        $pe->Legajo = $persona['Legajo'];
+        $pe->CargoDesc = $persona['CargoDesc'];
+        $pe->Categoria = $persona['Categoria'];
+        $pe->Domicilio = utf8_decode($persona['Domicilio']);
+        $pe->Telefono = $persona['Telefono'];
+        $pe->TipoDNI = $persona['TipoDNI'];
+        $pe->DNI = $persona['DNI'];
+        $pe->FechaIngreso = $persona['FechaIngreso'];
+        $pe->PersonaId = $persona['PersonaId'];
+        $pe->Activo = ($persona['Activo'] == "on" ? "1" : "0");
+        $pe->FechaNac = ($persona['FechaNac'] == "" ? "0000-00-00 00:00:00" : $persona['FechaNac']);
         return $pe->Guardar();
     } catch (ErrorException $ex) {
         $e = new Errors();
